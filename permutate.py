@@ -1,24 +1,27 @@
 
 def permutate(word):
-    permutations = []
+    permutations = [] # main list to return
 
-    word_list = [ch for ch in word]
+    word_list = [str(ch) for ch in word] # separating all letters in word to a list
     word_length = len(word)
     
     def permutate_recurse(x, leftover):
-        if len(leftover) == 0:
+        if len(leftover) == 0: # end the recursion
             return x
 
         for i in range(0, len(leftover)):
             char = leftover[i]
-            perm_val = x + char
+            perm_val = x + char # create one permutation
 
-            leftover_temp = list(leftover)
-            del leftover_temp[i]
+            leftover_temp = list(leftover) # copying the list of letters
+            del leftover_temp[i] # removing the letter from the list becuase it had already been used
             
-            if len(perm_val) == word_length:
+            if len(perm_val) == word_length: # only add permutation if length matches
                 permutations.append(perm_val)
 
+            # RECURSIVE STEP
+            # do the step over again with all the permutations for current step
+            # and without the letter already used
             permutate_recurse(perm_val, leftover_temp)
 
     permutate_recurse('', word_list)
