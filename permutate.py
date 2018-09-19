@@ -1,6 +1,4 @@
 
-
-
 def permutate(word):
     permutations = []
 
@@ -12,17 +10,18 @@ def permutate(word):
             return x
 
         for i in range(0, len(leftover)):
-            x_temp = x
-            leftover_temp = list(leftover)
             char = leftover[i]
+            perm_val = x + char
+
+            leftover_temp = list(leftover)
             del leftover_temp[i]
             
-            if len(x_temp + char) == word_length:
-            	permutations.append(x_temp + char)
+            if len(perm_val) == word_length:
+                permutations.append(perm_val)
 
-            permutate_recurse(x_temp + char, leftover_temp)
+            permutate_recurse(perm_val, leftover_temp)
 
     permutate_recurse('', word_list)
     return permutations
 
-print permutate('abc')
+print permutate('abcde')
