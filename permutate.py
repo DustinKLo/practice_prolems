@@ -2,8 +2,8 @@
 def permutate(word):
     permutations = [] # main list to return
 
-    word_list = [str(ch) for ch in word] # separating all letters in word to a list
-    word_length = len(word)
+    word_list = [ch for ch in str(word)] # separating all letters in word to a list
+    word_length = len(str(word))
     
     def permutate_recurse(x, leftover):
         if len(leftover) == 0: # end the recursion
