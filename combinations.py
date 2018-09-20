@@ -20,20 +20,17 @@ def combination(ls, k):
             head, tail = ls[i], ls[i+1:]
             new_word = word + head # create a new word (ie. node)
 
-            if len(new_word) < k: # if the word length shorter than specified, recurse
-                print 'branches: {} {}'.format(new_word, tail)
+            if len(new_word) < k: # if the word length shorter than specified (k), recurse
+                if len(word) == 0: # blank word means its a root node 
+                    print 'root nodes: {} {}'.format(new_word, tail)
+                else:
+                    print 'branches: {} {}'.format(new_word, tail)
                 combination_recurse(tail, new_word)
             else: # if word length is as specified, add it to master list
                 print 'end nodes: {} {}'.format(new_word, tail)
                 combinations.append(new_word)
 
-
-    for i in range(0, len(ls)):
-    	# creating the root tree nodes
-        head, tail = ls[i], ls[i+1:] # head is the first letter of list, tail is the rest
-        if len(tail) >= k - 1:
-            print 'root tree nodes: {} {}'.format(head, tail)
-            combination_recurse(tail, head) # start the recursion
+    combination_recurse(ls, '')
 
     return combinations
 
