@@ -37,6 +37,6 @@ def combination(ls, k):
 
 # warning only use single characters, dont use anything '10'+
 if __name__ == '__main__':
-    x = ['A','B','C','D','E','F','G','H','I','K','L','M','N','O','P','Q','R','S','T','V','X','Y','Z']
+    x = ['A','B','C','D','E','F','G','H','I','K','L','M','N','O','P','Q','R','S','T','V','W','X','Y','Z']
     print combination(x, 3)
 
