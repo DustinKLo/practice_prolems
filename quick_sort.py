@@ -44,12 +44,12 @@ def quick_sort(ls):
     left_ls = ls[:left_idx + 1]
     right_ls = ls[left_idx + 1:]
 
-    print '{} {}'.format(left_ls, right_ls)
+    print('{} {}'.format(left_ls, right_ls))
 
     left_ls = quick_sort(left_ls)
     right_ls = quick_sort(right_ls)
 
-    print '{} {}'.format(left_ls, right_ls)
+    print('{} {}'.format(left_ls, right_ls))
 
     return left_ls + right_ls
 
@@ -58,5 +58,5 @@ if __name__ == '__main__':
     import numpy as np
     x = np.arange(21)
     np.random.shuffle(x)
-    print x.tolist()
+    print(x.tolist())
     quick_sort(x.tolist())

@@ -27,4 +27,4 @@ def permutate(word):
     permutate_recurse('', word_list)
     return permutations
 
-print permutate('abcde')
+print(permutate('abcde'))

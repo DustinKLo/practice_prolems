@@ -46,5 +46,5 @@ if __name__ == '__main__':
     import numpy as np
     x = np.arange(21)
     np.random.shuffle(x)
-    print x.tolist()
-    print merge_sort(x.tolist())
+    print(x.tolist())
+    print(merge_sort(x.tolist()))
