@@ -17,6 +17,9 @@ def fib_memoized(n):
 		if n <= 2:
 			return 1
 
+		if cache.get(n):
+			return cache[n]
+
 		# the previous values (n-2) or (n-1) is cached then grab it from the cache dictionary
 		# or else calculate it with recursion
 		if cache.get(n-1):
