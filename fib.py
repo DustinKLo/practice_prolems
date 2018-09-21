@@ -17,6 +17,7 @@ def fib_memoized(n):
 		if n <= 2:
 			return 1
 
+		# making it alittle faster when retrieving f(n-1) and f(n-2)
 		if cache.get(n):
 			return cache[n]
 
