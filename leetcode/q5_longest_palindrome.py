@@ -1,16 +1,29 @@
 
 def check_palindrome(s):
-	pass
+	if s == s[::-1]:
+		return True
+	return False
 
 def longestPalindrome(s):
     """
     :type s: str
     :rtype: str
     """
-    print s
 
+    if len(s) == 1:
+    	return s
+
+    palindrome = ''
     for i in range(0, len(s)-1):
-    	sub_string = s[i:]
-    	print '{} {} {}'.format(i, s[i], s[i:])
+    	for j in range(i+1, len(s)+1):
+    		word = s[i:j]
 
-longestPalindrome("babadsqujandz")
+    		if check_palindrome(word) and len(word) > len(palindrome):
+    			print('palindrome: {}'.format(word))
+    			palindrome = word
+
+    return palindrome
+
+
+x = longestPalindrome("gphyvqruxjmwhonjjrgumxjhfyupajxbjgthzdvrdqmdouuukeaxhjumkmmhdglqrrohydrmbvtuwstgkobyzjjtdtjroqpyusfsbjlusekghtfbdctvgmqzeybnwzlhdnhwzptgkzmujfldoiejmvxnorvbiubfflygrkedyirienybosqzrkbpcfidvkkafftgzwrcitqizelhfsruwmtrgaocjcyxdkovtdennrkmxwpdsxpxuarhgusizmwakrmhdwcgvfljhzcskclgrvvbrkesojyhofwqiwhiupujmkcvlywjtmbncurxxmpdskupyvvweuhbsnanzfioirecfxvmgcpwrpmbhmkdtckhvbxnsbcifhqwjjczfokovpqyjmbywtpaqcfjowxnmtirdsfeujyogbzjnjcmqyzciwjqxxgrxblvqbutqittroqadqlsdzihngpfpjovbkpeveidjpfjktavvwurqrgqdomiibfgqxwybcyovysydxyyymmiuwovnevzsjisdwgkcbsookbarezbhnwyqthcvzyodbcwjptvigcphawzxouixhbpezzirbhvomqhxkfdbokblqmrhhioyqubpyqhjrnwhjxsrodtblqxkhezubprqftrqcyrzwywqrgockioqdmzuqjkpmsyohtlcnesbgzqhkalwixfcgyeqdzhnnlzawrdgskurcxfbekbspupbduxqxjeczpmdvssikbivjhinaopbabrmvscthvoqqbkgekcgyrelxkwoawpbrcbszelnxlyikbulgmlwyffurimlfxurjsbzgddxbgqpcdsuutfiivjbyqzhprdqhahpgenjkbiukurvdwapuewrbehczrtswubthodv")
+print(x)
