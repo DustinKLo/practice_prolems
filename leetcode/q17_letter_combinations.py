@@ -2,7 +2,7 @@
 def letter_combinations(digits):
     if len(digits) == 0:
         return []
-        
+
     num_mapper = {
         '2': ['a', 'b', 'c'],
         '3': ['d', 'e', 'f'],
