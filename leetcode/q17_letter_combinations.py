@@ -17,20 +17,20 @@ def letter_combinations(digits):
     digits = str(digits)
     letters = [num_mapper[digit] for digit in digits]
 
-    def letter_combinations_rec(prefix, ls, count):
-        if count == 0:
+    def letter_combinations_rec(prefix, ls):
+        if len(prefix) == len(digits):
             combinations.append(prefix)
             return
         
         for l_index in range(0, len(ls)):
             for ch in ls[l_index]:
-                letter_combinations_rec(prefix + ch, ls[l_index+1:], count - 1)
+                letter_combinations_rec(prefix + ch, ls[l_index+1:])
 
-    letter_combinations_rec('', letters, len(letters))
+    letter_combinations_rec('', letters)
     return combinations
 
 
 if __name__ == '__main__':
-    d = '2345'
+    d = '234567'
     combinations = letter_combinations(d)
     print(combinations)
