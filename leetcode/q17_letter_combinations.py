@@ -20,7 +20,6 @@ def letter_combinations(digits):
     def letter_combinations_rec(prefix, ls):
         if len(prefix) == len(digits):
             combinations.append(prefix)
-            return
         
         for l_index in range(0, len(ls)):
             for ch in ls[l_index]:
