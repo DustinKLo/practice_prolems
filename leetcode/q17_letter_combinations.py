@@ -14,7 +14,7 @@ def letter_combinations(digits):
     }
 
     combinations = []
-    digits = str(digits).replace('1', '')
+    digits = str(digits)
     letters = [num_mapper[digit] for digit in digits]
 
     def letter_combinations_rec(prefix, ls, count):
