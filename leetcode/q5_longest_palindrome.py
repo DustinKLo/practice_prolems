@@ -26,6 +26,6 @@ def longestPalindrome(s):
 
 
 if __name__ == '__main__':
-    x = longestPalindrome("gphyvqruxjmwhonjjrgumxjhfyupajxbjgthzdvrdqmdouuukeaxh")
+    x = longestPalindrome("gphyvqruxjmwhonjjrgumxjhfyupajxbjgthzdvrdqmdouuukeaxhasdsa")
     print(x)
     print(len(x))
