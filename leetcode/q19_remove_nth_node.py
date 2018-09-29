@@ -11,25 +11,36 @@ class Solution(object):
         :type n: int
         :rtype: ListNode
         """
-        m = 0
-        ahead = head
-        while ahead.next != None:
-            print(ahead.val)
-            ahead = ahead.next
-            m += 1
-        print(ahead.val)
+        l1 = ListNode(0)
+        l2 = ListNode(0)
+        h1 = l1
+        l1.next = head
+        l2.next = head
+        count = -1
+        print(l2.val)
+        print(l1.val)
+        print(h1.val)
+        print("onto the loops")
         
-        print('onto the next part index: {}'.format(m-n))
-        print(head.val)
+        while l2:
+            l2 = l2.next
+            if l2:
+                print(l2.val)
+            count += 1
+        print("counter at", count)
+        print("onto l1")
         
-        i = 1
-        while head.next:
-            if i == m-n:
-                head = head.next.next
-                print(head.val)
-            else:
-                head = head.next
-                print(head.val)
-            i += 1
+        while l1 and count>n:
+            l1=l1.next
+            if l1:
+                print(l1.val, count, h1.val)
+            count-=1
+        print("done with l1")
         
-        return head
+        if l1.next:
+            l1.next=l1.next.next
+            print(l1.val)
+            return h1.next
+        
+        return h1
+        
