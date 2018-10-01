@@ -19,11 +19,9 @@ class Solution(object):
             if i % 2 == 0:
                 l1.next = head
                 l1 = l1.next
-                print("l1: {}".format(l1.val))
             else:
                 l2.next = head
                 l2 = l2.next
-                print("l2: {}".format(l2.val))
             head = head.next
             i += 1
             
@@ -33,6 +31,14 @@ class Solution(object):
         l2_ans = l2_ans.next
         while l1_ans and l2_ans:
             print("l1: {}".format(l1_ans.val))
+            l3.next = l1_ans
             l1_ans = l1_ans.next
+            l3 = l3.next
+            
             print("l2: {}".format(l2_ans.val))
+            l3.next = l2_ans
             l2_ans = l2_ans.next
+            l3 = l3.next
+            
+        print("2nd part completed")
+        return head
