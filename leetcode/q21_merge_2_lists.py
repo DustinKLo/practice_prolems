@@ -11,6 +11,8 @@ class Solution(object):
         :type l2: ListNode
         :rtype: ListNode
         """
+        
+        # ans is the master node, whatever happens to l3 also happens to ans
         ans = l3 = ListNode(0)
         
         while l1 and l2: # and instead of or to avois breaking, leaves last value open in l1 or l2
