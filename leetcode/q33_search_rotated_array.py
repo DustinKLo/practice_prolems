@@ -19,7 +19,11 @@ def search(nums, target):
         print('left: {} \t right: {}'.format(left, right))
         print('left index: {} \t mid index: {} \t right index: {} \n'.format(l, m, r, counter))
 
-        if nums[m] == target:
+        if nums[l] == target:
+            return l
+        elif nums[r] == target:
+            return r
+        elif nums[m] == target:
             return m
         
         counter += 1
