@@ -28,7 +28,7 @@ class MergeSort {
             k++;
         }
 
-        if(i < left.length) {
+        if(i < j) {
             leftOver = Arrays.copyOfRange(left, i, left.length);
         } else {
             leftOver = Arrays.copyOfRange(right, j, right.length);

@@ -22,10 +22,10 @@ def search(nums, target):
 
         if nums[l] == target:
             return l
-        elif nums[r] == target:
-            return r
-        elif nums[m] == target:
-            return m
+        # elif nums[r] == target:
+        #     return r
+        # elif nums[m] == target:
+        #     return m
 
 
         if nums[l] <= nums[m]: # left most number is less than mid number
