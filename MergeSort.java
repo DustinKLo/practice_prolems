@@ -2,14 +2,6 @@ import java.util.Arrays;
 
 class MergeSort {
 
-    public static int[] combine(int[] a, int[] b){
-        int length = a.length + b.length;
-        int[] result = new int[length];
-        System.arraycopy(a, 0, result, 0, a.length);
-        System.arraycopy(b, 0, result, a.length, b.length);
-        return result;
-    }
-
     public int[] mergeSort(int[] ls) {
         if(ls.length == 1) {
             return ls;
@@ -17,8 +9,8 @@ class MergeSort {
         int len = ls.length;
         int[] left = Arrays.copyOfRange(ls, 0, len/2);
         int[] right = Arrays.copyOfRange(ls, len/2, len);
-        left = mergeSort(left);
-        right = mergeSort(right);
+        left = mergeSort(left); // recursive step, break it down until array of length 1
+        right = mergeSort(right); // recursive step, break it down until array of length 1
 
         int i = 0; // array index for left
         int j = 0; // array index for right
