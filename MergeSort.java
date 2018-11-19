@@ -37,14 +37,14 @@ class MergeSort {
         }
 
         if(i < left.length) {
-        	leftOver = Arrays.copyOfRange(left, i, left.length);
+            leftOver = Arrays.copyOfRange(left, i, left.length);
         } else {
-        	leftOver = Arrays.copyOfRange(right, j, right.length);
+            leftOver = Arrays.copyOfRange(right, j, right.length);
         }
 
         for(int n = 0; n < leftOver.length; n++) {
-        	sorted[k] = leftOver[n];
-        	k++;
+            sorted[k] = leftOver[n];
+            k++;
         }
 
         return sorted;
