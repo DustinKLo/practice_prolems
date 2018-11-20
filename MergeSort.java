@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 class MergeSort {
 
-    public int[] mergeSort(int[] ls) {
+    public static int[] mergeSort(int[] ls) {
         if(ls.length == 1) {
             return ls;
         }
@@ -43,10 +43,10 @@ class MergeSort {
     }
 
     public static void main(String args[]) {
-        MergeSort test = new MergeSort();
+        // MergeSort test = new MergeSort();
         int[] arr = new int[]{1,2,3,4,5,6,7,8,9,10,11,12,12,11,10,9,8,7,6,5,4,3,2,1};
         System.out.println(Arrays.toString(arr));
-        System.out.println(Arrays.toString(test.mergeSort(arr)));
+        System.out.println(Arrays.toString(mergeSort(arr)));
     }
 
 }
