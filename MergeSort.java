@@ -3,7 +3,6 @@ import java.util.Arrays;
 class MergeSort {
 
     public static int[] mergeStep(int[] left, int[] right) {
-
         int i = 0; // array index for left
         int j = 0; // array index for right
         int k = 0; // array index for sorted
