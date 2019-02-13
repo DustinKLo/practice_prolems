@@ -5,12 +5,14 @@
 #         self.left = None
 #         self.right = None
 
+
 class Solution(object):
+    # depth verse search helper function
     def traverseTree(self, node, l):
         if node == None:
             l.append(None)
             return
-            
+
         l.append(node.val)
         self.traverseTree(node.left, l)
         self.traverseTree(node.right, l)
@@ -34,5 +36,4 @@ class Solution(object):
             return True
         else:
             return False
-        
         
