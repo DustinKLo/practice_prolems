@@ -5,6 +5,10 @@
 #         self.left = None
 #         self.right = None
 
+
+
+# better solution is to use a self.max vairable and compare it
+# max(self.max, depth) for every iteration (recursive step)
 class Solution(object):
     def maxDepth(self, root):
         """
