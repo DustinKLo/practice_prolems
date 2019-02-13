@@ -32,19 +32,18 @@ class Solution(object):
         """
         self.symmetric = True
         
-        print("root: {}".format(root.val))
-        
-        if root == None:
+        if not root:
             return True
         elif root.left == None and root.right == None:
             return True
         elif (root.left == None) ^ (root.right == None):
             return False
         
-        left_side = root.left
-        right_side = root.right
-        
-        self.traverse(left_side, right_side)
-        print(self.symmetric)
-        
-        return self.symmetric
+        else:
+            left_side = root.left
+            right_side = root.right
+
+            self.traverse(left_side, right_side)
+            print(self.symmetric)
+
+            return self.symmetric
