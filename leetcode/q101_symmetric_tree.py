@@ -7,14 +7,14 @@
 
 class Solution(object):   
     def traverse(self, left_side, right_side):
-        if left_side != None and right_side != None:
-            print("left side: {}\nright side: {}".format(left_side.val, right_side.val))
-            print(left_side.val == right_side.val)
-            print("\n")
+        if left_side == None and right_side == None:
+            return
+        # if left_side != None and right_side != None:
+        #     print("left side: {}\nright side: {}".format(left_side.val, right_side.val))
+        #     print(left_side.val == right_side.val)
+        #     print("\n")
         if (left_side == None) ^ (right_side == None):
             self.symmetric = False
-            return
-        if left_side == None and right_side == None:
             return
         if left_side.val != right_side.val:
             self.symmetric = False
@@ -44,6 +44,6 @@ class Solution(object):
             right_side = root.right
 
             self.traverse(left_side, right_side)
-            print(self.symmetric)
+            # print(self.symmetric)
 
             return self.symmetric
