@@ -111,5 +111,5 @@ if __name__ == "__main__":
     s2 = time.time() - t2
     print("1st time: {}".format(s1))
     print("2nd time: {}".format(s2))
-    print(s1 - s2)
-    print(s1/s2)
+    print("time difference: {}".format(s1 - s2))
+    print("How many times faster: {}".format(s1/s2))
