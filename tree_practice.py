@@ -37,7 +37,7 @@ class TreeNode(object):
 
         return all_left_nodes, all_right_nodes
 
-    def validate(self): # this method is more intuitive
+    def validate(self): # this method is more intuitive but slower
         self.traverse_validate(self, "")
         print(self.valid)
         return self.valid
@@ -55,10 +55,12 @@ class TreeNode(object):
         elif right_tree_min is None and right_tree_max is None:
             left_max = right_min = root.data
         else:
-            left_max = max(left_tree_min, left_tree_max)
-            right_min = min(right_tree_min, right_tree_max)
+            left_max = max(left_tree_min, left_tree_max, float('_inf') if root.left is None else root.left.data)
+            right_min = min(right_tree_min, right_tree_max, float('inf') if root.right is None else root.right.data)
 
-        print("left max: {} \t current node: {} \t right min: {}".format(left_max, root.data, right_min))
+        left_data = None if root.left is None else root.left.data
+        right_data = None if root.right is None else root.right.data 
+        print("left max: {} \t left node: {} \t current node: {} \t right node: {} \t right min: {}".format(left_max, left_data, root.data, right_data, right_min))
         
         if root.data < left_max or root.data > right_min or \
            (root.right is not None and root.data > root.right.data) or \
@@ -68,7 +70,7 @@ class TreeNode(object):
         
         return left_max, root.data, right_min
 
-    def validate_fast(self): # this method is less intuitive but is faster
+    def validate_fast(self): # this method is less intuitive but faster
         self.traverse_validate_fast(self)
         print(self.valid)
         return self.valid
@@ -107,6 +109,7 @@ if __name__ == "__main__":
     t2 = time.time()
     a1.validate_fast()
     s2 = time.time() - t2
+    print(s1)
     print(s2)
     print(s1 - s2)
     print(s1/s2)
