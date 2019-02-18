@@ -22,8 +22,7 @@ class TreeNode(object):
         min_right_side = min(all_right_nodes) if len(all_right_nodes) > 0 else float('inf')
 
         print("Current node value: {}".format(root.data))
-        print("Left Array: {}".format(all_left_nodes))
-        print("Right Array: {}".format(all_right_nodes))
+        print("Left Array: {} \t Right Array: {}".format(all_left_nodes, all_right_nodes))
 
         if root.data > min_right_side or root.data < max_left_side:
             print("Not a valid binary search tree\n")
