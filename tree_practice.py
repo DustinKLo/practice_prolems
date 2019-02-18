@@ -27,7 +27,6 @@ class TreeNode(object):
         if root.data > min_right_side or root.data < max_left_side:
             print("Not a valid binary search tree\n")
             root.valid = False
-            # return [], [] # break the loop if its invalid
         else:
             print("IS a valid binary search tree\n")
 
@@ -38,13 +37,47 @@ class TreeNode(object):
 
         return all_left_nodes, all_right_nodes
 
-    def validate(self):
+    def validate(self): # this method is more intuitive
         self.traverse_validate(self, "")
         print(self.valid)
         return self.valid
 
 
+    def traverse_validate_fast(self, root):
+        if root is None:
+            return None, None, None
+
+        left_tree_min, child_left, left_tree_max = self.traverse_validate_fast(root.left)
+        right_tree_min, child_right, right_tree_max = self.traverse_validate_fast(root.right)
+
+        if left_tree_min is None and left_tree_max is None:
+            left_max = right_min = root.data
+        elif right_tree_min is None and right_tree_max is None:
+            left_max = right_min = root.data
+        else:
+            left_max = max(left_tree_min, left_tree_max)
+            right_min = min(right_tree_min, right_tree_max)
+
+        print("left max: {} \t current node: {} \t right min: {}".format(left_max, root.data, right_min))
+        
+        if root.data < left_max or root.data > right_min or \
+           (root.right is not None and root.data > root.right.data) or \
+           (root.left is not None and root.data < root.left.data):
+            print("Tree is not valid\n")
+            root.valid = False
+        
+        return left_max, root.data, right_min
+
+    def validate_fast(self): # this method is less intuitive but is faster
+        self.traverse_validate_fast(self)
+        print(self.valid)
+        return self.valid
+
+
+
 if __name__ == "__main__":
+    import time
+
     a1 = TreeNode(20);
     a1.left = TreeNode(10);
     a1.left.left = TreeNode(5);
@@ -63,4 +96,17 @@ if __name__ == "__main__":
     a1.right.right.right = TreeNode(40);
     a1.right.right.right.right = TreeNode(45);
     a1.right.right.right.right.right = TreeNode(50);
+    a1.right.right.right.right.right.right = TreeNode(5);
+    
+    t1 = time.time()
     a1.validate()
+    s1 = time.time() - t1
+    print(s1)
+
+    a1.valid = True
+    t2 = time.time()
+    a1.validate_fast()
+    s2 = time.time() - t2
+    print(s2)
+    print(s1 - s2)
+    print(s1/s2)
