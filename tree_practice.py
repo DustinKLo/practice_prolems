@@ -59,4 +59,7 @@ if __name__ == "__main__":
     a1.right.left.left = TreeNode(5);
     a1.right.right = TreeNode(35);
     a1.right.right.left = TreeNode(10);
+    a1.right.right.right = TreeNode(40);
+    a1.right.right.right.right = TreeNode(45);
+    a1.right.right.right.right.right = TreeNode(50);
     a1.validate()
