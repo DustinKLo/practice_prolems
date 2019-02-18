@@ -26,7 +26,7 @@ class TreeNode(object):
 
         if root.data > min_right_side or root.data < max_left_side:
             print("Not a valid binary search tree\n")
-            self.valid = False
+            root.valid = False
             # return [], [] # break the loop if its invalid
         else:
             print("IS a valid binary search tree\n")
