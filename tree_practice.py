@@ -21,11 +21,11 @@ class TreeNode(object):
         max_left_side = max(all_left_nodes) if len(all_left_nodes) > 0 else float('-inf')
         min_right_side = min(all_right_nodes) if len(all_right_nodes) > 0 else float('inf')
 
-        # print("Current node value: {}".format(root.data))
-        # print("Left Array: {} \t Right Array: {}".format(sorted(all_left_nodes), sorted(all_right_nodes)))
+        print("Current node value: {}".format(root.data))
+        print("Left Array: {} \t Right Array: {}".format(sorted(all_left_nodes), sorted(all_right_nodes)))
 
         if root.data > min_right_side or root.data < max_left_side:
-            # print("Not a valid binary search tree\n")
+            print("Not a valid binary search tree\n")
             root.valid = False
         # else:
         #     print("IS a valid binary search tree\n")
@@ -39,7 +39,7 @@ class TreeNode(object):
 
     def validate(self): # this method is more intuitive but slower
         self.traverse_validate(self, "")
-        # print(self.valid)
+        print(self.valid)
         return self.valid
 
 
@@ -60,19 +60,19 @@ class TreeNode(object):
 
         left_data = None if root.left is None else root.left.data
         right_data = None if root.right is None else root.right.data 
-        # print("left max: {} \t left node: {} \t current node: {} \t right node: {} \t right min: {}".format(left_max, left_data, root.data, right_data, right_min))
+        print("left max: {} \t left node: {} \t current node: {} \t right node: {} \t right min: {}".format(left_max, left_data, root.data, right_data, right_min))
         
         if root.data < left_max or root.data > right_min or \
            (root.right is not None and root.data > root.right.data) or \
            (root.left is not None and root.data < root.left.data):
-            # print("Tree is not valid\n")
+            print("Tree is not valid\n")
             root.valid = False
         
         return left_max, root.data, right_min
 
     def validate_fast(self): # this method is less intuitive but faster
         self.traverse_validate_fast(self)
-        # print(self.valid)
+        print(self.valid)
         return self.valid
 
 
@@ -103,7 +103,6 @@ if __name__ == "__main__":
     t1 = time.time()
     a1.validate()
     s1 = time.time() - t1
-    # print(s1)
 
     a1.valid = True
     t2 = time.time()
