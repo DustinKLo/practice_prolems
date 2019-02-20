@@ -9,10 +9,6 @@ class Solution(object):
     def traverse(self, left_side, right_side):
         if left_side == None and right_side == None:
             return
-        # if left_side != None and right_side != None:
-        #     print("left side: {}\nright side: {}".format(left_side.val, right_side.val))
-        #     print(left_side.val == right_side.val)
-        #     print("\n")
         if left_side == None or right_side == None:
             self.symmetric = False
             return
@@ -38,10 +34,8 @@ class Solution(object):
             return True
         elif root.left == None or root.right == None:
             return False
-        
         else:
             left_side = root.left
             right_side = root.right
-
             self.traverse(left_side, right_side)
             return self.symmetric
