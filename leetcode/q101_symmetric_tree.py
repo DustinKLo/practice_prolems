@@ -13,7 +13,7 @@ class Solution(object):
         #     print("left side: {}\nright side: {}".format(left_side.val, right_side.val))
         #     print(left_side.val == right_side.val)
         #     print("\n")
-        if (left_side == None) ^ (right_side == None):
+        if left_side == None or right_side == None:
             self.symmetric = False
             return
         if left_side.val != right_side.val:
@@ -36,7 +36,7 @@ class Solution(object):
             return True
         elif root.left == None and root.right == None:
             return True
-        elif (root.left == None) ^ (root.right == None):
+        elif root.left == None or root.right == None:
             return False
         
         else:
@@ -44,6 +44,4 @@ class Solution(object):
             right_side = root.right
 
             self.traverse(left_side, right_side)
-            # print(self.symmetric)
-
             return self.symmetric
