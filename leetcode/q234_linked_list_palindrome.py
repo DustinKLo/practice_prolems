@@ -22,11 +22,11 @@ class Solution(object):
         slow = head
         fast = head
         while fast != None and fast.next != None:
-            if fast.next.next is not None:
+            if fast.next.next is not None: # don't wanna move too far into the linked list
                 slow = slow.next
             fast = fast.next.next
         
-        mid_anchor = slow
+        mid_anchor = slow # keeping track of what to point to
         mid = mid_anchor.next
         
         prev = mid
