@@ -39,3 +39,6 @@ def plusOne(digits):
             digits.insert(0, 1)
     
     return digits
+
+if __name__ == "__main__":
+    pass
