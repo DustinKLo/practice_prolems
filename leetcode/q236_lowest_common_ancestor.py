@@ -12,13 +12,16 @@ class Solution(object):
 		if root == None:
 			return False
 
+		# print("adding", root.val)
 		path.append(root.val)
 		if root.val == target.val:
+			# print("found target", target.val)
 			return True
 		
 		if self.find_path(root.left, target, path) or self.find_path(root.right, target, path):
 			return True
 		
+		# print("removing", root.val)
 		path.pop(-1)
 		return False
 
@@ -35,6 +38,7 @@ class Solution(object):
 		
 		path1 = self.find_path(root, p, self.path1)
 		print(self.path1)
+		print("")
 		path2 = self.find_path(root, q, self.path2)
 		print(self.path2)
 
