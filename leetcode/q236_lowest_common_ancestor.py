@@ -12,16 +12,16 @@ class Solution(object):
 		if root == None:
 			return False
 
-		# print("adding", root.val)
+		print("adding", root.val)
 		path.append(root.val)
 		if root.val == target.val:
-			# print("found target", target.val)
+			print("found target", target.val)
 			return True
 		
 		if self.find_path(root.left, target, path) or self.find_path(root.right, target, path):
 			return True
 		
-		# print("removing", root.val)
+		print("removing", root.val)
 		path.pop(-1)
 		return False
 
@@ -61,13 +61,13 @@ if __name__ == "__main__":
 	root.left.right = TreeNode(2)
 	root.left.right.left = TreeNode(7)
 	root.left.right.right = TreeNode(4)
-	# root.left.right.right.right = TreeNode(9)
-	# root.left.right.right.right.right = TreeNode(10)
-	# root.left.right.right.right.right.right = TreeNode(11)
+	root.left.right.right.right = TreeNode(9)
+	root.left.right.right.right.right = TreeNode(10)
+	root.left.right.right.right.right.right = TreeNode(11)
 	root.right = TreeNode(1)
 	root.right.left = TreeNode(0)
 	root.right.right = TreeNode(8)
-	Solution().lowestCommonAncestor(root, TreeNode(4), TreeNode(6))
+	Solution().lowestCommonAncestor(root, TreeNode(11), TreeNode(6))
 
 
 
