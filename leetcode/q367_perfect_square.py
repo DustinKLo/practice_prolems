@@ -1,3 +1,5 @@
+# Newton's method
+# x_n = x_n-1 - (f(x) - x) / f'(x)
 class Solution:
     def isPerfectSquare(self, num):
         x_n_minus_1 = (float(num) + 1)/2
