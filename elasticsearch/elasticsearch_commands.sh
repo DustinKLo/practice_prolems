@@ -1,7 +1,9 @@
 GET localhost:9200 # base url for elasticsearch
 
 # LOAD DATA IN BULK
+# https://download.elastic.co/demos/kibana/gettingstarted/shakespeare.json
 curl -H "Content_Type: application/json" -X POST 'localhost:9200/shakespeare/_bulk?pretty' --data-binary @shakespeare.json
+# https://download.elastic.co/demos/kibana/gettingstarted/accounts.zip
 curl -H 'Content-Type: application/json' -XPOST 'localhost:9200/bank/account/_bulk?pretty' --data-binary @accounts.json
 
 
@@ -77,3 +79,53 @@ POST localhost:9200/shakespeare/scene/_search/
         }
     }
 }
+
+
+# "cardinality" is DISTINCT count of play_name
+GET localhost:9200/shakespeare/_search
+{
+    "size":0,
+    "aggs" : {
+        "Total plays" : {
+            "cardinality" : {
+                "field" : "play_name.keyword"
+            }
+        }
+    }
+}
+
+# "terms" is group by play_name and how many documents
+# SELECT play_name, COUNT(*) FROM shakespeare GROUP BY play_name
+GET localhost:9200/shakespeare/_search
+{
+    "size":0,
+    "aggs" : {
+        "Popular plays" : {
+            "terms" : {
+                "field" : "play_name.keyword"
+            }
+        }
+    }
+}
+
+
+# GROUP BY play_name AND GROUP BY _type (_tyoe: line, scene, act)
+GET localhost:9200/shakespeare/_search
+{
+    "size":0,
+    "aggs" : {
+        "Total plays" : {
+            "terms" : {
+                "field" : "play_name.keyword"
+            },
+            "aggs" : {
+             "Per type" : {
+                 "terms" : {
+                     "field" : "_type"
+                  }
+             }
+            }
+        }
+    }
+}
+
