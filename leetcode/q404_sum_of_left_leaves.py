@@ -36,7 +36,7 @@ class Solution(object):
         if root == None:
             return 0
         if root.left is not None and root.left.left is None and root.left.right is None:
-            return root.left.val + self.sumOfLeftLeaves(root.left) + self.sumOfLeftLeaves(root.right)
+            return root.left.val + self.sumOfLeftLeaves(root.right)
         else:
             return self.sumOfLeftLeaves(root.left) + self.sumOfLeftLeaves(root.right)
 
