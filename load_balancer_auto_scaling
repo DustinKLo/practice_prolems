@@ -1,0 +1,22 @@
+1. create instance
+	- configure the instance to be able to launch server (apache, django, working website)
+	- create AMI from the server (right click -> image -> create image)
+2. create launch configuration
+	- choose existing AMI (your instance you just created)
+3. create auto scaling with launch configuration
+	- always have default VPC (if not, contact AWS and they'll create one for you)
+	- "use scaling policy to adjust capacity of group" if you have more info about your needs and load
+		-  "keep this group at initial size" for demo
+	- add notification - emails if server load is too high
+	- this will create a new ec2 instance (with auto-scaling security group)
+
+4. load balancer
+	- users will now hit your "website" (which is your auto-scaling group) and the load balancer will equally redirect the traffic
+	- application load balancer
+		- allows load balancer to go to a different set of servers (auto-scaling group)
+			- all traffic goes through the address of the load balancer
+			- ie. image and blog part of website
+	- classic load balancer
+		- equally distribute traffic to the servers, regardless of which application theyre using
+	- create new load balancer security group (HTTP port 80)
+	- target group needs to point to auto-scaling group
