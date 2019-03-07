@@ -20,3 +20,7 @@
 		- equally distribute traffic to the servers, regardless of which application theyre using
 	- create new load balancer security group (HTTP port 80)
 	- target group needs to point to auto-scaling group
+		- auto-scaling group -> edit -> target group -> <add target group created earlier>
+	- on load balancer dashboard -> highlight load balancer
+		- on bottom, click "view/edit rules"
+		- allows website to point specific route path to target group for auto-scaling
