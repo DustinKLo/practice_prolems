@@ -55,7 +55,7 @@ class TreeNode(object):
         elif right_tree_min is None and right_tree_max is None:
             left_max = right_min = root.data
         else:
-            left_max = max(left_tree_min, left_tree_max, float('_inf') if root.left is None else root.left.data)
+            left_max = max(left_tree_min, left_tree_max, float('-inf') if root.left is None else root.left.data)
             right_min = min(right_tree_min, right_tree_max, float('inf') if root.right is None else root.right.data)
 
         left_data = None if root.left is None else root.left.data
