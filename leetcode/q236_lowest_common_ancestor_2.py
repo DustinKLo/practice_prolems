@@ -11,7 +11,10 @@ class Solution(object):
         self.lowest_parent = None
 
     def traverse(self, node, p, q):
+        if node == None:
+            return False
         print('current node: %s' % node.val)
+
         if node.val == p or node.val == q:
             print('found it: %s' % node.val)
             return True
@@ -54,10 +57,13 @@ if __name__ == '__main__':
     root.right.left = TreeNode(5)
     root.right.left.left = TreeNode(7)
     root.right.left.right = TreeNode(8)
+    root.right.left.right.left = TreeNode(9)
+    root.right.left.right.right = TreeNode(12)
+    root.right.left.right.left.left = TreeNode(11)
     root.right.right = TreeNode(6)
 
-    child1 = 5
-    child2 = 6
+    child1 = 11
+    child2 = 12
     print('child nodes [%s, %s]' % (child1, child2))
     s = Solution()
     lowest_parent = s.lowestCommonAncestor(root, child1, child2)
