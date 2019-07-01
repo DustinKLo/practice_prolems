@@ -48,7 +48,7 @@ class Solution(object):
 
 
 if __name__ == '__main__':
-    root = TreeNode(10)
+    root = TreeNode(0)
     root.left = TreeNode(1)
     root.right = TreeNode(2)
     root.left.left = TreeNode(3)
@@ -58,12 +58,12 @@ if __name__ == '__main__':
     root.right.left.left = TreeNode(7)
     root.right.left.right = TreeNode(8)
     root.right.left.right.left = TreeNode(9)
-    root.right.left.right.right = TreeNode(12)
+    root.right.left.right.right = TreeNode(10)
     root.right.left.right.left.left = TreeNode(11)
     root.right.right = TreeNode(6)
 
-    child1 = 11
-    child2 = 12
+    child1 = 3
+    child2 = 11
     print('child nodes [%s, %s]' % (child1, child2))
     s = Solution()
     lowest_parent = s.lowestCommonAncestor(root, child1, child2)
