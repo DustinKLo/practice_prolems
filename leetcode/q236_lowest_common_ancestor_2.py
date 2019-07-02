@@ -61,9 +61,20 @@ if __name__ == '__main__':
     root.right.left.right.left.left = TreeNode(11)
     root.right.left.right.left.left.right = TreeNode(12)
     root.right.right = TreeNode(6)
+    
+    # Leetcode example tree
+    # root = TreeNode(3)
+    # root.left = TreeNode(5)
+    # root.left.left = TreeNode(6)
+    # root.left.right = TreeNode(2)
+    # root.left.right.left = TreeNode(7)
+    # root.left.right.right = TreeNode(4)
+    # root.right = TreeNode(1)
+    # root.right.left = TreeNode(0)
+    # root.right.right = TreeNode(8)
 
-    child1 = 12
-    child2 = 8
+    child1 = 3
+    child2 = 1
     print('child nodes [%s, %s]' % (child1, child2))
     s = Solution()
     lowest_parent = s.lowestCommonAncestor(root, child1, child2)
