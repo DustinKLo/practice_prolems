@@ -20,8 +20,7 @@ class Solution(object):
 
         if node.val == p or node.val == q:
             print('found it: %s' % node.val)
-            if node.val in (p, q):
-                self.lowest_parent = node.val
+            self.lowest_parent = node.val
             return True
 
         if not node.left and not node.right:
