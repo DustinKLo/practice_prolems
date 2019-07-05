@@ -20,10 +20,6 @@ class Solution(object):
             self.lowest_parent = node.val
             return True
 
-        if not node.left and not node.right:
-            print('dead end: %s' % node.val)
-            return False
-
         left = self.traverse(node.left, p, q)
         right = self.traverse(node.right, p, q)
 
@@ -73,8 +69,8 @@ if __name__ == '__main__':
     # root.right.left = TreeNode(0)
     # root.right.right = TreeNode(8)
 
-    child1 = 3
-    child2 = 1
+    child1 = 12
+    child2 = 3
     print('child nodes [%s, %s]' % (child1, child2))
     s = Solution()
     lowest_parent = s.lowestCommonAncestor(root, child1, child2)
