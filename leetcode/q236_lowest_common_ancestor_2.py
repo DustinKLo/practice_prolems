@@ -43,7 +43,7 @@ class Solution(object):
 
 
 if __name__ == '__main__':
-    import random
+    from itertools import combinations 
 
     root = TreeNode(0)
     root.left = TreeNode(1)
@@ -72,12 +72,10 @@ if __name__ == '__main__':
     # root.right.right = TreeNode(8)
 
     s = Solution()
-    for i in range(0, 25):
-        node_list = set(list(range(0, 12)))
-        child1 = random.sample(node_list, 1)[0]
-        node_list.remove(child1)
-        child2 = random.sample(node_list, 1)[0]
-        print('child nodes [%s, %s]' % (child1, child2))
-        lowest_parent = s.lowestCommonAncestor(root, child1, child2)
+    node_list = set(list(range(0, 12)))
+    comb = combinations(node_list, 2)
+    for pairs in comb:
+        print('child nodes [%s, %s]' % (pairs[0], pairs[1]))
+        lowest_parent = s.lowestCommonAncestor(root, pairs[0], pairs[1])
         print('LOWEST PARENT: %s' % lowest_parent)
         print('#' * 25 + '\n')
