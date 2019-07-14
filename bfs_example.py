@@ -11,10 +11,11 @@ def spiral_tree(root):
 	next_level = []  # stacks
 
 	direction = -1
+	ans = ''
 	while len(current_level) > 0 or len(next_level) > 0:
 		while len(current_level) > 0:
 			cur_node = current_level.pop(-1)
-			print(cur_node.val)
+			ans += '%i, ' % cur_node.val
 
 			if direction == 1:
 				next_level.append(cur_node.left) if cur_node.left else None
@@ -25,6 +26,7 @@ def spiral_tree(root):
 		current_level = next_level
 		next_level = []
 		direction *= -1
+	print(ans)
 
 
 def spiral_tree_inefficient(root):
