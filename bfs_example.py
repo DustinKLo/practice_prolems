@@ -28,30 +28,6 @@ def spiral_tree(root):
 	print(ans)
 
 
-def spiral_tree_inefficient(root):
-	node_layers = []
-	
-	def traverse(node, level):
-		if node is None:
-			return
-		if len(node_layers) <= level:
-			node_layers.append([node.val])
-		else:
-			node_layers[level].append(node.val)
-		traverse(node.left, level + 1)
-		traverse(node.right, level + 1)
-
-	traverse(root, 0)
-	switch = -1
-	for layer in node_layers:
-		if switch == 1:
-			print(layer)
-		else:
-			layer.reverse()
-			print(layer)
-		switch *= -1
-
-
 def reverse_order_tree(root):
 	node_layers = []
 	
@@ -88,6 +64,5 @@ if __name__ == '__main__':
 	root.right.right.right = TreeNode(15)
 
 	spiral_tree(root)
-	spiral_tree_inefficient(root)
 	reverse_order_tree(root)
 
