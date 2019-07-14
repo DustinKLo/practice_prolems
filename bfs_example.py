@@ -7,26 +7,49 @@ class TreeNode(object):
 
 
 def spiral_tree(root):
-	queue = []
+	current_level = [root]  # stacks
+	next_level = []  # stacks
 
-	def traverse(node, direction):
-		queue.append(node)
-		
-		while len(queue) > 0:
-			if len(queue) > 0:
-				print([x.val for x in queue if x is not None])
-			cur_node = queue.pop(0)
-			if cur_node:
-				print(cur_node.val)
-				if direction == 1:
-					queue.append(cur_node.left)
-					queue.append(cur_node.right)
-				else:
-					queue.append(cur_node.right)
-					queue.append(cur_node.left)
-			direction *= -1
+	direction = -1
+	while len(current_level) > 0 or len(next_level) > 0:
+		while len(current_level) > 0:
+			cur_node = current_level.pop(-1)
+			print(cur_node.val)
+
+			if direction == 1:
+				next_level.append(cur_node.left) if cur_node.left else None
+				next_level.append(cur_node.right) if cur_node.right else None
+			else:
+				next_level.append(cur_node.right) if cur_node.right else None
+				next_level.append(cur_node.left) if cur_node.left else None
+		current_level = next_level
+		next_level = []
+		direction *= -1
+
+
+def spiral_tree_inefficient(root):
+	node_layers = []
 	
-	traverse(root, -1)
+	def traverse(node, level):
+		if node is None:
+			return
+		if len(node_layers) <= level:
+			node_layers.append([node.val])
+		else:
+			node_layers[level].append(node.val)
+		traverse(node.left, level + 1)
+		traverse(node.right, level + 1)
+
+	traverse(root, 0)
+	switch = -1
+	for layer in node_layers:
+		if switch == 1:
+			print(layer)
+		else:
+			layer.reverse()
+			print(layer)
+		switch *= -1
+		
 
 
 if __name__ == '__main__':
@@ -39,4 +62,5 @@ if __name__ == '__main__':
 	root.right.right = TreeNode(7)
 
 	spiral_tree(root)
+	spiral_tree_inefficient(root)
 
