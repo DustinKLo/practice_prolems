@@ -24,6 +24,7 @@ def spiral_tree(root):
 				next_level.append(cur_node.right) if cur_node.right else None
 				next_level.append(cur_node.left) if cur_node.left else None
 		current_level = next_level
+		next_level = []
 		direction *= -1
 	print(ans)
 
