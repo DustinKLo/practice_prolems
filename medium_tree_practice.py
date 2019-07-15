@@ -208,21 +208,18 @@ class TreeCousinChecker():
 			left, left_level = traverse(node.left, level + 1)
 			right, right_level = traverse(node.right, level + 1)
 
-			print('\nnode.val: {}\tleft: {}\tleft_level: {}\tright: {}\tright_level: {}'.format(node.val, left, left_level, right, right_level))
 			if left and right:
-				print('left && right')
 				if left_level == 2 and right_level == 2:
 					self.are_cousins = True
 					self.parent = node.val
 				return True, left_level + 1
 			if left ^ right:
-				print('left ^ right')
 				cur_level = right_level + 1 if left_level == -1 else left_level + 1
 				return True, cur_level
 			return False, -1
 
 		traverse(self.root, 0)
-		print(self.parent, self.are_cousins)
+		print(self.are_cousins)
 
 
 if __name__ == '__main__':
@@ -328,7 +325,7 @@ if __name__ == '__main__':
     print('node_cousin_finder: ')
     cousin_checker = TreeCousinChecker(root)
     cousin_checker.node_cousin_finder(5, 7)
-    print('#' * 25)
+    print('')
     cousin_checker = TreeCousinChecker(root)
     cousin_checker.node_cousin_finder(8, 11)
     print('')
