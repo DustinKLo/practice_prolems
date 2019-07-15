@@ -197,13 +197,12 @@ class TreeCousinChecker():
 		self.are_cousins = False
 
 	def node_cousin_finder(self, target1, target2):
-		print(target1, target2)
+		print('node values: {} {}'.format(target1, target2))
 
 		def traverse(node, level):
 			if not node:
 				return False, -1
 			if node.val in (target1, target2):
-				print('found it: {}'.format(node.val))
 				return True, 1
 
 			left, left_level = traverse(node.left, level + 1)
@@ -317,11 +316,19 @@ if __name__ == '__main__':
     root.left.right = TreeNode(5)
     root.right.left = TreeNode(6)
     root.right.right = TreeNode(7)
+    root.left.left.left = TreeNode(8)
+    root.left.left.right = TreeNode(9)
+    root.left.right.left = TreeNode(10)
+    root.left.right.right = TreeNode(11)
+    root.right.left.left = TreeNode(12)
+    root.right.left.right = TreeNode(13)
+    root.right.right.left = TreeNode(14)
+    root.right.right.right = TreeNode(15)
 
     print('node_cousin_finder: ')
     cousin_checker = TreeCousinChecker(root)
     cousin_checker.node_cousin_finder(5, 7)
-
-    # cousin_checker = TreeCousinChecker(root)
-    # cousin_checker.node_cousin_finder(5, 4)
+    print('#' * 25)
+    cousin_checker = TreeCousinChecker(root)
+    cousin_checker.node_cousin_finder(8, 11)
     print('')
