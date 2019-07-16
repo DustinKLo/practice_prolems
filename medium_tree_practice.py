@@ -269,6 +269,34 @@ class TreeCousinsFinder():
         print(self.cousins)
 
 
+def sum_tree(root):
+    def traverse(node):
+        if not node:
+            return [0]
+        left = traverse(node.left)
+        right = traverse(node.right)
+
+        sum_left = sum(left)
+        sum_right = sum(right)
+
+        if sum_left + sum_right != 0:
+            node.val = sum_left + sum_right
+        return [sum_left, sum_right, node.val]
+
+    def print_tree(node):
+        if not node:
+            return
+        print(node.val)
+        print_tree(node.left)
+        print_tree(node.right)
+
+    print('old tree:')
+    print_tree(root)
+    print('new tree:')
+    traverse(root)
+    print_tree(root)
+
+
 if __name__ == '__main__':
     'https://medium.com/@codingfreak/binary-tree-interview-questions-and-practice-problems-439df7e5ea1f'
 
@@ -380,3 +408,15 @@ if __name__ == '__main__':
     print('find_cousins: ')
     cousin_finder = TreeCousinsFinder(root)
     cousin_finder.find_cousins(14)
+    print('')
+
+    root = TreeNode(1)
+    root.left = TreeNode(2)
+    root.right = TreeNode(3)
+    root.left.left = TreeNode(4)
+    root.left.right = TreeNode(5)
+    root.right.left = TreeNode(6)
+    root.right.right = TreeNode(7)
+
+    print('sum_tree: ')
+    sum_tree(root)
