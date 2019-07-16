@@ -379,4 +379,4 @@ if __name__ == '__main__':
 
     print('find_cousins: ')
     cousin_finder = TreeCousinsFinder(root)
-    cousin_finder.find_cousins(8)
+    cousin_finder.find_cousins(14)
