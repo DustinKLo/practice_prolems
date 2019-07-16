@@ -183,43 +183,90 @@ def find_next_node_to_right(root, target):
 
 def is_complete_tree(root):
     if not root:
-    	return True
+        return True
     # print(root.left.val if root.left else None, root.right.val if root.right else None)
     if not root.left and root.right:
-    	return False
+        return False
     return is_complete_tree(root.left) and is_complete_tree(root.right)
     
 
 class TreeCousinChecker():
-	def __init__(self, root):
-		self.root = root
-		self.parent = None
-		self.are_cousins = False
+    def __init__(self, root):
+        self.root = root
+        self.parent = None
+        self.are_cousins = False
 
-	def node_cousin_finder(self, target1, target2):
-		print('node values: {} {}'.format(target1, target2))
+    def check_nodes_are_cousins(self, target1, target2):
+        print('node values: {} {}'.format(target1, target2))
 
-		def traverse(node, level):
-			if not node:
-				return False, -1
-			if node.val in (target1, target2):
-				return True, 1
+        def traverse(node, level):
+            if not node:
+                return False, -1
+            if node.val in (target1, target2):
+                return True, 1
 
-			left, left_level = traverse(node.left, level + 1)
-			right, right_level = traverse(node.right, level + 1)
+            left, left_level = traverse(node.left, level + 1)
+            right, right_level = traverse(node.right, level + 1)
 
-			if left and right:
-				if left_level == 2 and right_level == 2:
-					self.are_cousins = True
-					self.parent = node.val
-				return True, left_level + 1
-			if left ^ right:
-				cur_level = right_level + 1 if left_level == -1 else left_level + 1
-				return True, cur_level
-			return False, -1
+            if left and right:
+                if left_level == 2 and right_level == 2:
+                    self.are_cousins = True
+                    self.parent = node.val
+                return True, left_level + 1
+            if left ^ right:
+                cur_level = right_level + 1 if left_level == -1 else left_level + 1
+                return True, cur_level
+            return False, -1
 
-		traverse(self.root, 0)
-		print(self.are_cousins)
+        traverse(self.root, 0)
+        print(self.are_cousins)
+
+
+class TreeCousinsFinder():
+    def __init__(self, root):
+        self.root = root
+        self.grandparent = None
+        self.direction = None
+        self.parent = None
+        self.direction = None
+        self.cousins = []
+
+    def traverse(self, node, level):
+        if not node:
+            return 0, None
+        if node.val == self.target:
+            return 1, node.val
+        left, left_val = self.traverse(node.left, level + 1)
+        right, right_val = self.traverse(node.right, level + 1)
+        # print('node.val: {} left.val: {} right.val: {} left: {}, right: {}'.format(node.val, left_val, right_val, left, right))
+
+        if left > 0 or right > 0:
+            if left == 2 or right == 2:
+                self.grandparent = node
+                self.direction = 'left' if left == 2 else 'right'
+            if left == 1 or right == 1:
+                self.parent = node.val
+            return 1 + max(left, right), left_val or right_val
+        return 0, None
+
+    def locate_cousins(self, node):
+        if node:
+            parent = node.left if self.direction == 'right' else node.right
+        else:
+            return []
+        if parent is None:
+            return self.cousins
+        self.cousins.append(parent.left.val) if parent.left is not None else None
+        self.cousins.append(parent.right.val) if parent.right is not None else None
+        return self.cousins
+
+    def find_cousins(self, target):
+        self.target = target
+        self.traverse(root, 0)
+        print('target: {} \t \nself.parent: {}'.format(target, self.parent))
+        # print('self.grandparent.val: {}'.format(self.grandparent.val))
+        self.locate_cousins(self.grandparent)
+        print(self.cousins)
 
 
 if __name__ == '__main__':
@@ -322,10 +369,14 @@ if __name__ == '__main__':
     root.right.right.left = TreeNode(14)
     root.right.right.right = TreeNode(15)
 
-    print('node_cousin_finder: ')
+    print('check_nodes_are_cousins: ')
     cousin_checker = TreeCousinChecker(root)
-    cousin_checker.node_cousin_finder(5, 7)
+    cousin_checker.check_nodes_are_cousins(5, 7)
     print('')
     cousin_checker = TreeCousinChecker(root)
-    cousin_checker.node_cousin_finder(8, 11)
+    cousin_checker.check_nodes_are_cousins(8, 11)
     print('')
+
+    print('find_cousins: ')
+    cousin_finder = TreeCousinsFinder(root)
+    cousin_finder.find_cousins(8)
