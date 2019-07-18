@@ -23,6 +23,7 @@ def print_tree_layers(root):
         print(layer)
 
 
+# http://www.techiedelight.com/spiral-order-traversal-binary-tree/
 def spiral_tree(root):
     current_level = [root]  # stacks
     next_level = []  # stacks
@@ -46,6 +47,7 @@ def spiral_tree(root):
     print(ans)
 
 
+# http://www.techiedelight.com/reverse-level-order-traversal-binary-tree/
 def reverse_order_tree(root):
     node_layers = []
     
@@ -63,7 +65,7 @@ def reverse_order_tree(root):
     for i in range(len(node_layers), 0, -1):
         print(node_layers[i-1])
 
-
+# https://www.techiedelight.com/reverse-level-order-traversal-binary-tree/
 def reverse_order_tree_iterative(root):
     current_level = [root]  # stacks
     next_level = []  # stacks
@@ -82,6 +84,7 @@ def reverse_order_tree_iterative(root):
     print([n.val for n in ans])
 
 
+# http://www.techiedelight.com/print-nodes-binary-tree-specific-order/
 def specific_order_print_node(root):
     queue1 = [root.left]  # .append() to enqueue, .pop(0) to dequeue
     queue2 = [root.right]
@@ -103,6 +106,7 @@ def specific_order_print_node(root):
     print(ans)
 
 
+# http://www.techiedelight.com/print-left-view-of-binary-tree/
 def left_view_tree(root):
     current_level = [root]
     next_level = []
@@ -121,6 +125,7 @@ def left_view_tree(root):
     print(ans)
 
 
+# http://www.techiedelight.com/print-right-view-binary-tree/
 def right_view_tree(root):
     current_level = [root]
     next_level = []
@@ -139,6 +144,7 @@ def right_view_tree(root):
     print(ans)
 
 
+# http://www.techiedelight.com/print-top-view-binary-tree/
 def top_view_tree(root):
     x_axis_hash = set()
     ans = []
@@ -155,6 +161,7 @@ def top_view_tree(root):
     print(ans)
 
 
+# http://www.techiedelight.com/print-bottom-view-of-binary-tree/
 def bottom_view_tree(root):
     x_axis_hash = {}  # { -1: [node.val, ...], ... }
 
@@ -172,6 +179,8 @@ def bottom_view_tree(root):
     print(ans)
 
 
+
+# http://www.techiedelight.com/find-next-node-in-same-level-binary-tree/
 def find_next_node_to_right(root, target):
     node_layers = []
 
@@ -197,6 +206,7 @@ def find_next_node_to_right(root, target):
             continue
 
 
+# http://www.techiedelight.com/check-given-binary-tree-complete-binary-tree-not/
 def is_complete_tree(root):
     if not root:
         return True
@@ -206,6 +216,7 @@ def is_complete_tree(root):
     return is_complete_tree(root.left) and is_complete_tree(root.right)
     
 
+# http://www.techiedelight.com/determine-two-nodes-are-cousins/
 class TreeCousinChecker():
     def __init__(self, root):
         self.root = root
@@ -238,6 +249,7 @@ class TreeCousinChecker():
         print(self.are_cousins)
 
 
+# http://www.techiedelight.com/print-cousins-of-given-node-binary-tree/
 class TreeCousinsFinder():
     def __init__(self, root):
         self.root = root
@@ -285,6 +297,7 @@ class TreeCousinsFinder():
         print(self.cousins)
 
 
+# http://www.techiedelight.com/inplace-convert-a-tree-sum-tree/
 def sum_tree(root):
     def traverse(node):
         if not node:
@@ -303,6 +316,7 @@ def sum_tree(root):
     print_tree_layers(root)
 
 
+# http://www.techiedelight.com/check-given-binary-tree-sum-tree-not/
 class CheckSumTree():
     def __init__(self, root):
         self.root = root
@@ -327,6 +341,7 @@ class CheckSumTree():
         self.traverse(self.root)
 
 
+# http://www.techiedelight.com/combinations-of-words-formed-replacing-given-numbers-corresponding-english-alphabet/
 class WordNumberCombination():
     def __init__(self):
         self.root = None
@@ -357,6 +372,7 @@ class WordNumberCombination():
         print(self.combinations)
 
 
+# http://www.techiedelight.com/determine-given-binary-tree-is-subtree-of-another-binary-tree-not/
 class SubtreeChecker():
     def __init__(self, root):
         self.root = root
@@ -391,6 +407,7 @@ class SubtreeChecker():
         print(is_sum_tree)
 
 
+# http://www.techiedelight.com/find-diameter-of-a-binary-tree/
 class DiameterOfTree():
     def __init__(self):
         self.diameter = 0
@@ -412,6 +429,7 @@ class DiameterOfTree():
         print(self.diameter)
 
 
+# http://www.techiedelight.com/check-given-binary-tree-symmetric-structure-not/
 def tree_symmetric(root):
     def traverse(left, right):
         if not left and not right:
@@ -424,6 +442,7 @@ def tree_symmetric(root):
     print(is_symmetric)
 
 
+# http://www.techiedelight.com/convert-binary-tree-to-its-mirror/
 def mirror_binary_tree(node):
     if not node:
         return
@@ -432,3 +451,33 @@ def mirror_binary_tree(node):
     node.right = temp
     mirror_binary_tree(node.left)
     mirror_binary_tree(node.right)
+
+
+# https://www.techiedelight.com/determine-binary-tree-can-converted-another-number-swaps-left-right-child/
+def transform_another_tree(n1, n2):
+    if not n1 and not n2:
+        return True
+    'set(TreeNode, None) compare sets of both trees'
+    n1_val = n1.val if n1 else None
+    n2_val = n2.val if n2 else None
+    if n1_val != n2_val:
+        return False
+
+    n1_left_val = n1.left.val if n1.left else None
+    n1_right_val = n1.right.val if n1.right else None
+
+    n2_left_val = n2.left.val if n2.left else None
+    n2_right_val = n2.right.val if n2.right else None
+
+    n1_set = {n1_left_val, n1_right_val}
+    n2_set = {n2_left_val, n2_right_val}
+    print({n1_val, n2_val}, n1_set, n2_set, n1_set == n2_set)
+
+    if n1_set != n2_set:
+        return False
+
+    if n1_left_val == n2_left_val and n1_right_val == n2_right_val:
+        return transform_another_tree(n1.left, n2.left) and transform_another_tree(n1.right, n2.right)
+    elif n1_left_val == n2_right_val and n1_right_val == n2_left_val:
+        return transform_another_tree(n1.right, n2.left) and transform_another_tree(n1.left, n2.right)
+    return False
