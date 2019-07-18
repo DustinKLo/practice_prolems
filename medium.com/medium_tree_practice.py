@@ -294,7 +294,7 @@ def sum_tree(root):
 
         if left + right != 0:
             node.val = left + right
-        return left +right + node.val
+        return left + right + node.val
 
     print('old tree:')
     print_tree_layers(root)
