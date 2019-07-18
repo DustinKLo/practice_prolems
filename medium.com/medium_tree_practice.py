@@ -401,7 +401,6 @@ class DiameterOfTree():
         self.diameter = 0
 
     def traverse(self, node):
-        'every time we get the left and right res for recurse we check and update self.diameter'
         if not node:
             return 0
 
