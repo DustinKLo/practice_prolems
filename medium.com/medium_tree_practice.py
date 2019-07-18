@@ -398,11 +398,21 @@ class SubtreeChecker():
 
 class DiameterOfTree():
     def __init__(self):
-        'find to 2 deepest nodes and store them in class variables'
-        'treat the problem similar to the lowest common parent problem'
-        'but add depths and then combine them when True and True'
+        self.diameter = 0
 
+    def traverse(self, node):
+        'every time we get the left and right res for recurse we check and update self.diameter'
+        if not node:
+            return 0
 
+        left = self.traverse(node.left)
+        right = self.traverse(node.right)
+        # print(node.val, max(left, right) + 1)
 
+        if left + right > self.diameter:
+            self.diameter = left + right + 1
+        return max(left, right) + 1
 
-
+    def diameter_finder(self, root):
+        self.traverse(root)
+        print(self.diameter)
