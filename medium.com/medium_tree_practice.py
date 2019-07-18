@@ -413,3 +413,25 @@ class DiameterOfTree():
     def diameter_finder(self, root):
         self.traverse(root)
         print(self.diameter)
+
+
+def tree_symmetric(root):
+    def traverse(left, right):
+        if not left and not right:
+            return True
+        if (left is not None)  ^ (right is not None):
+            return False
+        return traverse(left.left, right.right) and traverse(left.right, right.left)
+
+    is_symmetric = traverse(root.left, root.right)
+    print(is_symmetric)
+
+
+def mirror_binary_tree(node):
+    if not node:
+        return
+    temp = node.left
+    node.left = node.right
+    node.right = temp
+    mirror_binary_tree(node.left)
+    mirror_binary_tree(node.right)
