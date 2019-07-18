@@ -362,6 +362,46 @@ class WordNumberCombination():
         print(self.combinations)
 
 
+class SubtreeChecker():
+    def __init__(self, root):
+        self.root = root
+        self.subtree_root = None
+        self.starting_point = None
+
+    def find_starting_point(self, node):
+        if not node:
+            return
+        if node.val == self.subtree_root.val:
+            self.starting_point = node
+            return
+        self.find_starting_point(node.left)
+        self.find_starting_point(node.right)
+
+    def compare_trees(self, main_tree_node, sub_tree_node):
+        if not main_tree_node and not sub_tree_node:
+            return True
+        if not sub_tree_node:
+            return False
+        if not main_tree_node:
+            return False
+        if sub_tree_node.val != main_tree_node.val:
+            return False
+        return self.compare_trees(main_tree_node.left, sub_tree_node.left) and self.compare_trees(main_tree_node.right, sub_tree_node.right)
+
+    def sub_tree_checker(self, subtree_root):
+        # root is the "subtree"
+        self.subtree_root = subtree_root
+        self.find_starting_point(self.root)
+        is_sum_tree = self.compare_trees(self.starting_point, self.subtree_root)
+        print(is_sum_tree)
+
+
+class DiameterOfTree():
+    def __init__(self):
+        'find to 2 deepest nodes and store them in class variables'
+        'treat the problem similar to the lowest common parent problem'
+        'but add depths and then combine them when True and True'
+
 
 
 
