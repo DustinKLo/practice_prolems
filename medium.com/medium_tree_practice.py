@@ -351,8 +351,6 @@ class WordNumberCombination():
             print(head, ls, res + [head])
             traverse(ls, res + [head])
 
-
-
         print('', ls, [])
         first_val = str(ls.pop(0))
         print(first_val, ls, [first_val])
