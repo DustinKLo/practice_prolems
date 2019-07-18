@@ -242,4 +242,3 @@ if __name__ == '__main__':
     r2.left.right.left = TreeNode(1)
     r2.left.right.right = TreeNode(7)
     print(transform_another_tree(r1, r2))
-

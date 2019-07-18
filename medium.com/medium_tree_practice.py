@@ -65,6 +65,7 @@ def reverse_order_tree(root):
     for i in range(len(node_layers), 0, -1):
         print(node_layers[i-1])
 
+
 # https://www.techiedelight.com/reverse-level-order-traversal-binary-tree/
 def reverse_order_tree_iterative(root):
     current_level = [root]  # stacks
