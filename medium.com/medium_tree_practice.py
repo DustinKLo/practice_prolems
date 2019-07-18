@@ -288,16 +288,13 @@ class TreeCousinsFinder():
 def sum_tree(root):
     def traverse(node):
         if not node:
-            return [0]
+            return 0
         left = traverse(node.left)
         right = traverse(node.right)
 
-        sum_left = sum(left)
-        sum_right = sum(right)
-
-        if sum_left + sum_right != 0:
-            node.val = sum_left + sum_right
-        return [sum_left, sum_right, node.val]
+        if left + right != 0:
+            node.val = left + right
+        return left +right + node.val
 
     print('old tree:')
     print_tree_layers(root)
