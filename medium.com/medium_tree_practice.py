@@ -482,3 +482,37 @@ def transform_another_tree(n1, n2):
     elif n1_left_val == n2_right_val and n1_right_val == n2_left_val:
         return transform_another_tree(n1.right, n2.left) and transform_another_tree(n1.left, n2.right)
     return False
+
+
+# https://www.techiedelight.com/find-lowest-common-ancestor-lca-two-nodes-binary-tree/
+class LowestCommonAncestor():
+    def __init__(self, root):
+        self.root = root
+        self.lowest_common_ancestor = None
+        self.n1 = None
+        self.n2 = None
+
+    def traverse(self, node):
+        if not node:
+            return False
+        if node.val in (self.n1, self.n2):
+            self.lowest_common_ancestor = node.val
+            return True
+
+        left = self.traverse(node.left)
+        right = self.traverse(node.right)
+
+        if left and right:
+            self.lowest_common_ancestor = node.val
+            return True
+        if left ^ right:
+            return True
+
+        return False
+
+    def find_lowest_common_ancestor(self, n1, n2):
+        self.lowest_common_ancestor = None
+        self.n1 = n1
+        self.n2 = n2
+        self.traverse(self.root)
+        print('n1: {} \t n2: {} \t lowest_common_ancestor: {}'.format(n1, n2, self.lowest_common_ancestor))
