@@ -691,3 +691,47 @@ def print_corner_trees(root):
             head = cur_level[0]
             tail = cur_level[-1]
             print(head.val, tail.val)
+
+
+# Node of a doubly linked list  
+class DllNode: 
+    # def __init__(self, next=None, prev=None, data=None):
+    def __init__(self, val):
+        self.val = val
+        self.next = None # reference to next node in DLL 
+        self.prev = None # reference to previous node in DLL 
+
+class TreeToDoubleLinkedList():
+    def __init__(self):
+        self.ls = []
+        self.linked_list_head = None
+
+    # in-order traversal
+    def traverse(self, node):
+        if not node:
+            return
+        self.traverse(node.left)
+        node_val = node.val
+        self.ls.append(DllNode(node_val))
+        self.traverse(node.right)
+
+    def create_double_linked_list(self):
+        self.linked_list_head = self.ls[0]
+        length = len(self.ls)
+        for i in range(1, length - 1):
+            node = self.ls[i]
+            prev_node = self.ls[i - 1]
+            prev_node.next = node
+            node.prev = prev_node
+
+    def print_doubly_linked_list(self):
+        n = self.linked_list_head
+        while n:
+            print(n.val, 'prev: ', n.prev.val if n.prev else None, 'next:', n.next.val if n.next else None)
+            n = n.next
+
+    def tree_to_doubly_linked_list(self, root):
+        self.ls = []
+        self.traverse(root)
+        self.create_double_linked_list()
+        self.print_doubly_linked_list()
