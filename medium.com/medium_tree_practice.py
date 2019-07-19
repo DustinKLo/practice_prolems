@@ -727,7 +727,9 @@ class TreeToDoubleLinkedList():
     def print_doubly_linked_list(self):
         n = self.linked_list_head
         while n:
-            print('cur', n.val, 'prev', n.prev.val if n.prev else None, 'next', n.next.val if n.next else None)
+            prev_val = n.prev.val if n.prev else None
+            next_val = n.next.val if n.next else None
+            print('cur', n.val, 'prev', prev_val, 'next', next_val)
             n = n.next
 
     def tree_to_doubly_linked_list(self, root):
