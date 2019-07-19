@@ -665,3 +665,29 @@ class DiagonalTraversal():
         self.traverse(root, 0, 0)
         for key in self.diagonal_paths.keys():
             print(self.diagonal_paths[key])
+
+
+# https://www.techiedelight.com/print-corner-nodes-every-level-binary-tree/
+def print_corner_trees(root):
+    cur_level = [root]
+    next_level = []
+
+    print(root.val)
+    while len(cur_level) > 0 or len(next_level) > 0:
+        while len(cur_level) > 0:
+            node = cur_level.pop(0)
+            if node.left:
+                next_level.append(node.left)
+            if node.right:
+                next_level.append(node.right)
+        cur_level = next_level
+        next_level = []
+        
+        if len(cur_level) == 0:
+            pass
+        elif len(cur_level) == 1:
+            print(cur_level.val)
+        else:
+            head = cur_level[0]
+            tail = cur_level[-1]
+            print(head.val, tail.val)
