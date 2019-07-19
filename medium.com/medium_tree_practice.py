@@ -518,6 +518,7 @@ class LowestCommonAncestor():
         print('n1: {} \t n2: {} \t lowest_common_ancestor: {}'.format(n1, n2, self.lowest_common_ancestor))
 
 
+# http://www.techiedelight.com/print-all-paths-from-root-to-leaf-nodes-binary-tree/
 def print_all_paths_from_root_to_leaf(root):
     def traverse(node, path):
         if not node:
@@ -537,6 +538,7 @@ def print_all_paths_from_root_to_leaf(root):
     traverse(root, [])
 
 
+# http://www.techiedelight.com/find-vertical-sum-given-binary-tree/
 def vertical_sum_tree(root):
     sums = {}
     def traverse(node, axis):
@@ -552,6 +554,7 @@ def vertical_sum_tree(root):
     print(sums)
 
 
+# http://www.techiedelight.com/vertical-traversal-binary-tree/
 def get_vertical_paths(root):
     vertical_paths = {}
     def traverse(node, axis):
