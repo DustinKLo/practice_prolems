@@ -591,3 +591,29 @@ def get_vertical_paths(root):
     
     for path in sorted(vertical_paths.keys()):
         print(vertical_paths[path])
+
+
+class DistanceBetweenNodes():
+    def __init__(self):
+        self.distance = 0
+
+    def traverse(self, node, n1, n2):
+        if not node:
+            return 0
+        if node.val in (n1, n2):
+            return 1
+
+        left = self.traverse(node.left, n1, n2)
+        right = self.traverse(node.right, n1, n2)
+
+        if left > 0 and right > 0:
+            self.distance = left + right
+            return left + right
+        if left > 0 or right > 0:
+            return max(left, right) + 1
+        return 0
+
+    def find_distance(self, root, n1, n2):
+        self.distance = 0
+        self.traverse(root, n1, n2)
+        print(n1, n2, 'distance: {}'.format(self.distance))
