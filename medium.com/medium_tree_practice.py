@@ -593,6 +593,7 @@ def get_vertical_paths(root):
         print(vertical_paths[path])
 
 
+# https://www.techiedelight.com/distance-between-given-pairs-of-nodes-binary-tree/
 class DistanceBetweenNodes():
     def __init__(self):
         self.distance = 0
@@ -617,3 +618,26 @@ class DistanceBetweenNodes():
         self.distance = 0
         self.traverse(root, n1, n2)
         print(n1, n2, 'distance: {}'.format(self.distance))
+
+
+# https://www.techiedelight.com/find-diagonal-sum-given-binary-tree/
+class DiagonalSums():
+    def __init__(self):
+        self.diagonal_sums = {}
+
+    def traverse(self, node, x_axis, y_axis):
+        if not node:
+            return
+        diag_idx = abs(x_axis - y_axis)
+        if diag_idx not in self.diagonal_sums.keys():
+            self.diagonal_sums[diag_idx] = node.val
+        else:
+            self.diagonal_sums[diag_idx] += node.val
+
+        self.traverse(node.left, x_axis - 1, y_axis + 1)
+        self.traverse(node.right, x_axis + 1, y_axis + 1)
+
+    def get_diagonal_sums(self, root):
+        self.diagonal_sums = {}
+        self.traverse(root, 0, 0)
+        print(self.diagonal_sums)

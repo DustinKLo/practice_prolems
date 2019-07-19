@@ -42,7 +42,6 @@ if __name__ == '__main__':
     specific_order_print_node(root)
     print('')
 
-
     root = TreeNode(1)
     root.left = TreeNode(2)
     root.left.right = TreeNode(4)
@@ -314,3 +313,15 @@ if __name__ == '__main__':
     distance_between_nodes = DistanceBetweenNodes()
     distance_between_nodes.find_distance(root, 7, 6)
     distance_between_nodes.find_distance(root, 8, 4)
+
+    root = TreeNode(1)
+    root.left = TreeNode(2)
+    root.right = TreeNode(3)
+    root.left.left = TreeNode(4)
+    root.right.left = TreeNode(5)
+    root.right.right = TreeNode(6)
+    root.right.left.left = TreeNode(7)
+    root.right.left.right = TreeNode(8)
+    print('DiagonalSums')
+    diagonal_sums_obj = DiagonalSums()
+    diagonal_sums_obj.get_diagonal_sums(root)
