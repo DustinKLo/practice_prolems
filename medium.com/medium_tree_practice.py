@@ -733,6 +733,5 @@ class TreeToDoubleLinkedList():
     def tree_to_doubly_linked_list(self, root):
         self.ls = []
         self.traverse(root)
-        print([n.val for n in self.ls])
         self.create_double_linked_list()
         self.print_doubly_linked_list()
