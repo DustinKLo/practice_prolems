@@ -325,3 +325,7 @@ if __name__ == '__main__':
     print('DiagonalSums')
     diagonal_sums_obj = DiagonalSums()
     diagonal_sums_obj.get_diagonal_sums(root)
+
+    print('DiagonalTraversal')
+    diagonal_sums_obj = DiagonalTraversal()
+    diagonal_sums_obj.get_diagonal_paths(root)

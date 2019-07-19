@@ -641,3 +641,27 @@ class DiagonalSums():
         self.diagonal_sums = {}
         self.traverse(root, 0, 0)
         print(self.diagonal_sums)
+
+
+# http://www.techiedelight.com/print-diagonal-traversal-binary-tree/
+class DiagonalTraversal():
+    def __init__(self):
+        self.diagonal_paths = {}
+
+    def traverse(self, node, x_axis, y_axis):
+        if not node:
+            return
+        diag_idx = abs(x_axis - y_axis)
+        if diag_idx not in self.diagonal_paths.keys():
+            self.diagonal_paths[diag_idx] = [node.val]
+        else:
+            self.diagonal_paths[diag_idx].append(node.val)
+
+        self.traverse(node.left, x_axis - 1, y_axis + 1)
+        self.traverse(node.right, x_axis + 1, y_axis + 1)
+
+    def get_diagonal_paths(self, root):
+        self.diagonal_paths = {}
+        self.traverse(root, 0, 0)
+        for key in self.diagonal_paths.keys():
+            print(self.diagonal_paths[key])
