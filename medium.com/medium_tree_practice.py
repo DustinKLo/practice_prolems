@@ -554,6 +554,27 @@ def vertical_sum_tree(root):
     print(sums)
 
 
+# https://www.techiedelight.com/find-ancestors-of-given-node-binary-tree/
+class AncestorsOfNode():    
+    def traverse(self, node, target):
+        if not node:
+            return []
+        if node.val == target:
+            return [node.val]
+        left_ls = self.traverse(node.left, target)
+        right_ls = self.traverse(node.right, target)
+
+        if len(left_ls) > 0:
+            return [node.val] + left_ls
+        if len(right_ls) > 0:
+            return [node.val] + right_ls
+        return []
+
+    def ancestor_finder(self, root, target):
+        ancestor_path = self.traverse(root, target)
+        print(target, ancestor_path)
+
+
 # http://www.techiedelight.com/vertical-traversal-binary-tree/
 def get_vertical_paths(root):
     vertical_paths = {}
