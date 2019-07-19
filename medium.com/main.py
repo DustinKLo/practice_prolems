@@ -313,6 +313,7 @@ if __name__ == '__main__':
     distance_between_nodes = DistanceBetweenNodes()
     distance_between_nodes.find_distance(root, 7, 6)
     distance_between_nodes.find_distance(root, 8, 4)
+    print('')
 
     root = TreeNode(1)
     root.left = TreeNode(2)
