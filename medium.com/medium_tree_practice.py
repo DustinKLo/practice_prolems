@@ -516,3 +516,37 @@ class LowestCommonAncestor():
         self.n2 = n2
         self.traverse(self.root)
         print('n1: {} \t n2: {} \t lowest_common_ancestor: {}'.format(n1, n2, self.lowest_common_ancestor))
+
+
+def print_all_paths_from_root_to_leaf(root):
+    def traverse(node, path):
+        if not node:
+            return
+
+        if node.left is None and node.right is None:
+            updated_path = path + [node.val]
+            print(' -> '.join(str(i) for i in updated_path))
+            return
+        elif node.left is None and node.right is not None:
+            traverse(node.right, path + [node.val])
+        elif node.left is not None and node.right is None:
+            traverse(node.left, path + [node.val])
+        else:
+            traverse(node.left, path + [node.val])
+            traverse(node.right, path + [node.val])
+    traverse(root, [])
+
+
+def vertical_sum_tree(root):
+    sums = {}
+    def traverse(node, axis):
+        if not node:
+            return
+        if axis not in sums.keys():
+            sums[axis] = node.val
+        else:
+            sums[axis] += node.val
+        traverse(node.left, axis - 1)
+        traverse(node.right, axis + 1)
+    traverse(root, 0)
+    print(sums)
