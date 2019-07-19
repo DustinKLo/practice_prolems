@@ -550,3 +550,20 @@ def vertical_sum_tree(root):
         traverse(node.right, axis + 1)
     traverse(root, 0)
     print(sums)
+
+
+def get_vertical_paths(root):
+    vertical_paths = {}
+    def traverse(node, axis):
+        if not node:
+            return
+        if axis not in vertical_paths.keys():
+            vertical_paths[axis] = [node.val]
+        else:
+            vertical_paths[axis].append(node.val)
+        traverse(node.left, axis - 1)
+        traverse(node.right, axis + 1)
+    traverse(root, 0)
+    
+    for path in sorted(vertical_paths.keys()):
+        print(vertical_paths[path])

@@ -275,3 +275,7 @@ if __name__ == '__main__':
     print('vertical_sum_tree')
     vertical_sum_tree(root)
     print('')
+
+    print('get_vertical_paths')
+    get_vertical_paths(root)
+    print('')
