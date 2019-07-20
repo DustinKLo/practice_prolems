@@ -737,3 +737,39 @@ class TreeToDoubleLinkedList():
         self.traverse(root)
         self.create_double_linked_list()
         self.print_doubly_linked_list()
+
+
+# https://www.techiedelight.com/convert-given-binary-tree-to-full-tree-removing-half-nodes/
+class RemoveHalfNodes():
+    def __init__(self, root):
+        self.root = root
+
+    def traverse(self, node, prev_node):
+        if not node:
+            return
+
+        if node.left and not node.right:
+            tmp = node
+            node = node.left
+            if prev_node.left == tmp:
+                prev_node.left = node
+            else:
+                prev_node.right = node
+            self.traverse(node, prev_node)
+        elif not node.left and node.right:
+            tmp = node
+            node = node.right
+            if prev_node.left == tmp:
+                prev_node.left = node
+            else:
+                prev_node.right = node
+            self.traverse(node, prev_node)
+        else:
+            self.traverse(node.left, node)
+            self.traverse(node.right, node)
+
+    def remove_half_nodes(self):
+        self.traverse(self.root, None)
+
+
+
