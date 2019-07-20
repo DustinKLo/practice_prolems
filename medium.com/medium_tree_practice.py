@@ -761,3 +761,34 @@ class RemoveHalfNodes():
 
     def remove_half_nodes(self):
         self.traverse(self.root, None)
+
+
+# https://www.techiedelight.com/sink-nodes-containing-zero-bottom-binary-tree/
+
+# https://www.techiedelight.com/truncate-given-binary-tree-remove-nodes-lie-path-sum-less-k/
+class RemoveNodesSumPathK():
+    def __init__(self, root):
+        self.root = root
+        self.k = None
+
+    def traverse(self, node, total):
+        if not node:
+            return 0
+        if (node.left is None) and (node.right is None):
+            # if we get to the end of the tree
+            if node.val + total > self.k:
+                return 1
+            else:
+                return 0
+
+        left = self.traverse(node.left, total + node.val)
+        right = self.traverse(node.right, total + node.val)
+        if left == 0:
+            node.left = None
+        if right == 0:
+            node.right = None
+        return max(left, right)
+
+    def remove_nodes(self, k):
+        self.k = k
+        self.traverse(self.root, 0)
