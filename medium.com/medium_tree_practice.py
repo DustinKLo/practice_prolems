@@ -792,3 +792,48 @@ class RemoveNodesSumPathK():
     def remove_nodes(self, k):
         self.k = k
         self.traverse(self.root, 0)
+
+
+# https://www.techiedelight.com/find-maximum-sum-root-to-leaf-path-binary-tree/
+class MaximumSumPath():
+    def __init__(self):
+        self.max = 0
+        self.path = []
+
+    def find_max_path(self, root):
+        self.max = 0
+        self.path = []
+        self.traverse(root, 0, [])
+        print(self.max, self.path)
+
+    def traverse(self, node, total, ls):
+        if not node:
+            return
+        if node.val + total > self.max:
+            self.max = node.val + total
+            self.path = ls + [node.val]
+        self.traverse(node.left, total + node.val, ls + [node.val])
+        self.traverse(node.right, total + node.val, ls + [node.val])
+
+
+# https://www.techiedelight.com/check-given-binary-tree-is-height-balanced-not/
+class HeightBalancedTree():
+    def __init__(self):
+        self.balanced = False
+
+    def traverse(self, node):
+        if not node:
+            return 0
+
+        left = self.traverse(node.left)
+        right = self.traverse(node.right)
+        if abs(left - right) > 1:
+            self.balanced = False
+        
+        # print(node.val, 'left', left, 'right', right, max(left, right) + 1, self.balanced)
+        return max(left, right) + 1
+
+    def is_balanced_tree(self, root):
+        self.balanced = True
+        self.traverse(root)
+        print(self.balanced)

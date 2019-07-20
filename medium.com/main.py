@@ -388,3 +388,12 @@ if __name__ == '__main__':
     remove_nodes_sum_path_k_obj.remove_nodes(20)
     print('\nafter')
     print_all_paths_from_root_to_leaf(remove_nodes_sum_path_k_obj.root)
+    print('')
+
+    print('MaximumSumPath')
+    max_sum_path = MaximumSumPath()
+    max_sum_path.find_max_path(root)
+
+    print('checked_balanced_tree')
+    checked_balanced_tree = HeightBalancedTree()
+    checked_balanced_tree.is_balanced_tree(root)
