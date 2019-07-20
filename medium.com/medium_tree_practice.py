@@ -747,18 +747,9 @@ class RemoveHalfNodes():
     def traverse(self, node, prev_node):
         if not node:
             return
-
-        if node.left and not node.right:
+        if (node.left is not None) ^ (node.right is not None):
             tmp = node
-            node = node.left
-            if prev_node.left == tmp:
-                prev_node.left = node
-            else:
-                prev_node.right = node
-            self.traverse(node, prev_node)
-        elif not node.left and node.right:
-            tmp = node
-            node = node.right
+            node = node.right if node.right else node.left
             if prev_node.left == tmp:
                 prev_node.left = node
             else:

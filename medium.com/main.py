@@ -363,7 +363,6 @@ if __name__ == '__main__':
     root.left.left = TreeNode(3)
     root.right.left = TreeNode(4)
     root.left.left.left = TreeNode(5)
-    # root.left.left.left.left = TreeNode(1337)
     root.right.left.left = TreeNode(6)
     root.right.left.right = TreeNode(7)
     print('RemoveHalfNodes')
