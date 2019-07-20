@@ -761,6 +761,3 @@ class RemoveHalfNodes():
 
     def remove_half_nodes(self):
         self.traverse(self.root, None)
-
-
-
