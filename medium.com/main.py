@@ -447,3 +447,7 @@ if __name__ == '__main__':
     print('38. PrintLeavesToRoot')
     print_leaves_to_root_obj = PrintLeavesToRoot()
     print_leaves_to_root_obj.print_leaves_to_root(root)
+    print('')
+
+    print('39. max_width_tree')
+    max_width_tree(root)

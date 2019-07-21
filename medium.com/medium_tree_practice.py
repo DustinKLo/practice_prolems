@@ -968,3 +968,27 @@ class PrintLeavesToRoot():
         self.traverse(root)
         for path in self.all_paths:
             print(' -> '.join(str(i) for i in path))
+
+
+# https://www.geeksforgeeks.org/maximum-width-of-a-binary-tree/
+def max_width_tree(root):
+    cur_level = [root]
+    next_level = []
+    max_width = 0
+
+    print([n.val for n in cur_level])
+    while len(cur_level) > 0 or len(next_level) > 0:
+        while len(cur_level) > 0:
+            n = cur_level.pop(0)
+            if n.left:
+                next_level.append(n.left)
+            if n.right:
+                next_level.append(n.right)
+
+        print([n.val for n in next_level])
+        if len(next_level) > max_width:
+            max_width = len(next_level)
+        cur_level = next_level
+        next_level = []
+
+    print('max width', max_width)
