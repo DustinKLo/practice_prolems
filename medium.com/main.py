@@ -422,3 +422,14 @@ if __name__ == '__main__':
     bst_original_structure_obj = BstOriginalStructure(root)
     bst_original_structure_obj.convert_to_bst()
     print_tree_layers(bst_original_structure_obj.root)
+    print('')
+
+    root = TreeNode(20)
+    root.left = TreeNode(10)
+    root.right = TreeNode(30)
+    root.right.left = TreeNode(5)
+    root.right.right = TreeNode(40)
+    print('DetermineValidBST')
+    valid_bst_obj = DetermineValidBST(root)
+    valid_bst_obj.check_valid()
+    

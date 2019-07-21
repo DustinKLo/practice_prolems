@@ -897,3 +897,40 @@ class BstOriginalStructure():
         self.get_structure(self.root)
         self.ls = sorted(self.ls)
         self.restructure_tree(self.root, self.ls)
+
+
+# https://www.techiedelight.com/determine-given-binary-tree-is-a-bst-or-not/
+class DetermineValidBST():
+    def __init__(self, root):
+        self.root = root
+        self.valid_bst = True
+
+    def traverse(self, node, direction):
+        if not node:
+            return None
+
+        left = self.traverse(node.left, 'left')
+        right = self.traverse(node.right, 'right')
+
+        if left is None and right is None:
+            return node.val
+        elif left is not None and right is None:
+            if left > node.val:
+                self.valid_bst = False
+            return max(node.val, left)
+        elif left is None and right is not None:
+            if right < node.val:
+                self.valid_bst = False
+            return min(node.val, right)
+        else:
+            # if both are not none
+            if node.val < left or node.val > right:
+                self.valid_bst = False
+            if direction == 'right':
+                return min(left, right, node.val)
+            else:
+                return max(left, right, node.val)
+
+    def check_valid(self):
+        self.traverse(self.root, None)
+        print(self.valid_bst)
