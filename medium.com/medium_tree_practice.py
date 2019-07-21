@@ -928,8 +928,14 @@ class DetermineValidBST():
                 self.valid_bst = False
             if direction == 'right':
                 return min(left, right, node.val)
-            else:
+            elif direction == 'left':
                 return max(left, right, node.val)
+            else:
+                if node.val > right:
+                    self.valid_bst = False
+                elif node.val < left:
+                    self.valid_bst = False
+                return
 
     def check_valid(self):
         self.traverse(self.root, None)
