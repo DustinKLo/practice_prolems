@@ -934,3 +934,31 @@ class DetermineValidBST():
     def check_valid(self):
         self.traverse(self.root, None)
         print(self.valid_bst)
+
+
+# https://www.techiedelight.com/print-leaf-to-root-path-binary-tree/
+class PrintLeavesToRoot():
+    def __init__(self):
+        self.all_paths = []
+
+    def traverse(self, node):
+        if not node:
+            return []
+        
+        left = self.traverse(node.left)
+        right = self.traverse(node.right)
+
+        if len(left) == 0 and len(right) == 0:
+            return [[node.val]]
+        
+        paths = left + right
+        for path in paths:
+            path.append(node.val)
+
+        self.all_paths = paths
+        return paths
+
+    def print_leaves_to_root(self, root):
+        self.traverse(root)
+        for path in self.all_paths:
+            print(' -> '.join(str(i) for i in path))

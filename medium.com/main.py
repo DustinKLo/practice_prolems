@@ -432,3 +432,18 @@ if __name__ == '__main__':
     print('37. DetermineValidBST')
     valid_bst_obj = DetermineValidBST(root)
     valid_bst_obj.check_valid()
+
+
+    root = TreeNode(1)
+    root.left = TreeNode(2)
+    root.right = TreeNode(3)
+    root.left.left = TreeNode(4)
+    root.left.right = TreeNode(5)
+    root.right.left = TreeNode(6)
+    root.right.right = TreeNode(7)
+    root.right.left.left = TreeNode(8)
+    root.right.left.right = TreeNode(9)
+    root.right.left.right.right = TreeNode(10)
+    print('38. PrintLeavesToRoot')
+    print_leaves_to_root_obj = PrintLeavesToRoot()
+    print_leaves_to_root_obj.print_leaves_to_root(root)
