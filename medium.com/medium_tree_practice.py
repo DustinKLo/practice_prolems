@@ -837,3 +837,63 @@ class HeightBalancedTree():
         self.balanced = True
         self.traverse(root)
         print(self.balanced)
+
+
+# https://www.techiedelight.com/convert-normal-binary-tree-left-child-right-sibling-binary-tree/
+class LeftChildRightSibling():
+    def __init__(self, root):
+        self.root = root
+
+    def traverse(self, node, repl_node):
+        if not node:
+            return
+        if repl_node is None:
+            tmp = node.right
+            node.right = None
+            self.traverse(node.left, tmp)
+            self.traverse(node.right, tmp)
+        elif repl_node is not None:
+            if (node.left is not None) and (node.right is not None):
+                tmp = node.right
+                node.right = repl_node
+                node.left.right = tmp
+            if node.right is None:
+                node.right = repl_node
+
+
+    def left_child_right_sibling(self):
+        # right_node = self.root.right is self.root else None
+        self.traverse(self.root, None)
+
+
+# https://www.techiedelight.com/convert-binary-tree-to-bst-maintaining-original-structure/
+class BstOriginalStructure():
+    def __init__(self, root):
+        self.root = root
+        self.ls = []
+
+    def get_structure(self, node):
+        if not node:
+            return 0
+        
+        self.ls.append(node.val)
+        left = self.get_structure(node.left)
+        right = self.get_structure(node.right)
+        
+        node.left_count = left
+        node.right_count = right
+        return left + right + 1
+
+    def restructure_tree(self, node, ls):
+        if not node:
+            return
+        left_count = node.left_count
+        right_count = node.right_count
+        node.val = ls[left_count]
+        self.restructure_tree(node.left, ls[:right_count])
+        self.restructure_tree(node.right, ls[(left_count + 1):])
+
+    def convert_to_bst(self):
+        self.get_structure(self.root)
+        self.ls = sorted(self.ls)
+        self.restructure_tree(self.root, self.ls)
