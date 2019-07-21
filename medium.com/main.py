@@ -416,7 +416,7 @@ if __name__ == '__main__':
     root.left.right = TreeNode(2)
     root.right.left = TreeNode(4)
     root.right.right = TreeNode(6)
-    print('BstOriginalStructure')
+    print('36. BstOriginalStructure')
     print_tree_layers(root)
     print('')
     bst_original_structure_obj = BstOriginalStructure(root)
