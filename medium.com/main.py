@@ -451,3 +451,18 @@ if __name__ == '__main__':
 
     print('39. max_width_tree')
     max_width_tree(root)
+    print('')
+
+
+    root = TreeNode(15)
+    root.left = TreeNode(10)
+    root.right = TreeNode(20)
+    root.left.left = TreeNode(8)
+    root.left.right = TreeNode(12)
+    root.right.left = TreeNode(16)
+    root.right.right = TreeNode(25)
+    root.right.left.left = TreeNode(18)
+    print('40. NodesDistanceToLeaf')
+    nodes_distance_to_leaf = NodesDistanceToLeaf()
+    nodes_distance_to_leaf.get_node_distance_to_leaf(root)
+    print('')

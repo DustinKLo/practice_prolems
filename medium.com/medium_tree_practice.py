@@ -992,3 +992,39 @@ def max_width_tree(root):
         next_level = []
 
     print('max width', max_width)
+
+# https://www.techiedelight.com/find-all-nodes-at-given-distance-from-leaf-nodes-in-a-binary-tree/
+class NodesDistanceToLeaf():
+    def __init__(self):
+        self.distances = {}
+    
+    def traverse(self, node):
+        if node is None:
+            return 0
+
+        left = self.traverse(node.left)
+        right = self.traverse(node.right)
+        
+        if left == right == 1:
+            if left not in self.distances.keys():
+                    self.distances[left] = [node.val]
+            else:
+                self.distances[left].append(node.val)
+        else:
+            if left >= 1:
+                if left not in self.distances.keys():
+                    self.distances[left] = [node.val]
+                else:
+                    self.distances[left].append(node.val)
+
+            if right >= 1:
+                if right not in self.distances.keys():
+                    self.distances[right] = [node.val]
+                else:
+                    self.distances[right].append(node.val)
+        return max(left, right) + 1
+
+    def get_node_distance_to_leaf(self, root):
+        self.distances = {}
+        self.traverse(root)
+        print(self.distances)
