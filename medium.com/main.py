@@ -432,6 +432,7 @@ if __name__ == '__main__':
     print('37. DetermineValidBST')
     valid_bst_obj = DetermineValidBST(root)
     valid_bst_obj.check_valid()
+    print('')
 
 
     root = TreeNode(1)

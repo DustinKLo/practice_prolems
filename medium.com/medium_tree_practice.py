@@ -993,6 +993,7 @@ def max_width_tree(root):
 
     print('max width', max_width)
 
+
 # https://www.techiedelight.com/find-all-nodes-at-given-distance-from-leaf-nodes-in-a-binary-tree/
 class NodesDistanceToLeaf():
     def __init__(self):
