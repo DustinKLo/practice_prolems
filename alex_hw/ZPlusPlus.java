@@ -15,7 +15,9 @@ public class ZPlusPlus {
 		    if (c == '(' || c == '[' || c == '{') {
 		    	stack.push(c);
 		    } else {
-		    	if (mapper.get(c) == stack.peek()) {
+		    	if (stack.isEmpty()) {
+		    		return false;
+		    	} else if (mapper.get(c) == stack.peek()) {
 		    		stack.pop();
 		    	} else {
 		    		return false;
