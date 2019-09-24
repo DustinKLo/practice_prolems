@@ -18,7 +18,7 @@ public class GenerateParanthesis {
         }
         if (current == target) {
             if (numLeft == numRight) {
-                patterns.add(pattern);
+                this.patterns.add(pattern);
             }
         }
         this.traverse(pattern.concat("("), current + 1, target, numLeft + 1, numRight);
