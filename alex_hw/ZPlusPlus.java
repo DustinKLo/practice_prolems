@@ -14,11 +14,11 @@ public class ZPlusPlus {
 			char c = inputString.charAt(i);
 			if (c == '(' || c == '[' || c == '{') {
 				stack.push(c);
+				continue;
 			} else if (stack.isEmpty() || mapper.get(c) != stack.peek()){
 				return false;
-			} else {
-				stack.pop();
-			}
+			} 
+			stack.pop();
 		}
 		return (stack.size() == 0) ? true : false;
 	}
