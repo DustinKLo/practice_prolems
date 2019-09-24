@@ -11,18 +11,15 @@ public class ZPlusPlus {
 		mapper.put('}', '{');
 
 		for (int i = 0; i < inputString.length(); i++) {
-		    char c = inputString.charAt(i);        
-		    if (c == '(' || c == '[' || c == '{') {
-		    	stack.push(c);
-		    } else {
-		    	if (stack.isEmpty()) {
-		    		return false;
-		    	} else if (mapper.get(c) == stack.peek()) {
-		    		stack.pop();
-		    	} else {
-		    		return false;
-		    	}
-		    }
+			char c = inputString.charAt(i);
+			if (c == '(' || c == '[' || c == '{') {
+				stack.push(c);
+			} else {
+				if (stack.isEmpty() || mapper.get(c) != stack.peek()) {
+					return false;
+				}
+				stack.pop();
+			}
 		}
 		return (stack.size() == 0) ? true : false;
 	}
