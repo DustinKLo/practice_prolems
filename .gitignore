@@ -1,9 +1,10 @@
 *.class
 .DS_Store
 *.pyc
-*.class
 *.txt
-*.class
+
+.idea/
+.idea
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
