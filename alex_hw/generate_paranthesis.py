@@ -38,4 +38,3 @@ if __name__ == '__main__':
 	test_case.generate_paranthesis(6)
 	test_case.generate_paranthesis(8)
 	test_case.generate_paranthesis(10)
-	test_case.generate_paranthesis(12)
