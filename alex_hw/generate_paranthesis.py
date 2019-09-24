@@ -3,10 +3,10 @@ class GenerateParanthesis:
 		self.patterns = list()
 
 	def traverse(self, pattern, current, target, num_left, num_right):
-		if num_right > num_left:
+		if current > target:
 			return
 
-		if abs(num_left - num_right) / 2 > target:
+		if num_right > num_left:
 			return
 
 		if current == target:
@@ -28,7 +28,7 @@ class GenerateParanthesis:
 		for x in self.patterns:
 			print('%i: %s' % (counter, x))
 			counter += 1
-		print()
+		print('')
 
 
 if __name__ == '__main__':
