@@ -14,10 +14,9 @@ public class ZPlusPlus {
 			char c = inputString.charAt(i);
 			if (c == '(' || c == '[' || c == '{') {
 				stack.push(c);
+			} else if (stack.isEmpty() || mapper.get(c) != stack.peek()){
+				return false;
 			} else {
-				if (stack.isEmpty() || mapper.get(c) != stack.peek()) {
-					return false;
-				}
 				stack.pop();
 			}
 		}
@@ -43,5 +42,10 @@ public class ZPlusPlus {
 		x = "()()()()()()((()))()()(((())))(())";
 		System.out.printf("%s: %b\n", x, validate(x));
 
+		x = "()()()()()()((()))()()(((())))(())(";
+		System.out.printf("%s: %b\n", x, validate(x));
+
+		x = "()()()()()()((()))()()(((())))(()))";
+		System.out.printf("%s: %b\n", x, validate(x));
 	}
 }
