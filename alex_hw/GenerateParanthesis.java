@@ -16,10 +16,6 @@ public class GenerateParanthesis {
         if (numLeft < numRight) {
             return;
         }
-        if (Math.abs(numLeft - numRight) / 2 > target) {
-            System.out.println(Math.abs(numLeft - numRight) / 2);
-            return;
-        }
         if (current == target) {
             if (numLeft == numRight) {
                 patterns.add(pattern);
@@ -38,7 +34,7 @@ public class GenerateParanthesis {
         this.traverse("", 0, num, 0, 0);
 
         for (int i = 0; i < this.patterns.size(); i++) {
-            System.out.printf("%d: %s\n", i, this.patterns.get(i));
+            System.out.printf("%d: %s\n", i + 1, this.patterns.get(i));
         }
         System.out.println();
     }
