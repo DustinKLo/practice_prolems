@@ -2,27 +2,27 @@ class GenerateParanthesis:
 	def __init__(self):
 		self.patterns = list()
 
-	def traverse(self, pattern, current, target, num_left, num_right):
-		if current > target:
+	def traverse(self, pattern, target, num_left, num_right):
+		if num_left + num_right > target:
 			return
 
 		if num_right > num_left:
 			return
 
-		if current == target:
+		if num_left + num_right == target:
 			if num_left == num_right:
 				self.patterns.append(pattern)
 			return
 
-		self.traverse(pattern + '(', current + 1, target, num_left + 1, num_right)
-		self.traverse(pattern + ')', current + 1, target, num_left, num_right + 1)
+		self.traverse(pattern + '(', target, num_left + 1, num_right)
+		self.traverse(pattern + ')', target, num_left, num_right + 1)
 
 	def generate_paranthesis(self, num):
 		self.patterns = []
 		if num % 2 != 0:
 			print('Odd number of paranthesis!!!')
 
-		self.traverse(pattern='', current=0, target=num, num_left=0, num_right=0)
+		self.traverse(pattern='', target=num, num_left=0, num_right=0)
 		counter = 1
 		print('number of paranthesis: %i' % num)
 		for x in self.patterns:

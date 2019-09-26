@@ -9,21 +9,21 @@ public class GenerateParanthesis {
         count = 1;
     }
 
-    public void traverse(String pattern, int current, int target, int numLeft, int numRight) {
-        if (current > target) {
+    public void traverse(String pattern, int target, int numLeft, int numRight) {
+        if (numLeft + numRight > target) {
             return;
         }
         if (numLeft < numRight) {
             return;
         }
-        if (current == target) {
+        if (numLeft + numRight == target) {
             if (numLeft == numRight) {
                 System.out.printf("%d: %s\n", this.count, pattern);
                 this.count++;
             }
         }
-        this.traverse(pattern.concat("("), current + 1, target, numLeft + 1, numRight);
-        this.traverse(pattern.concat(")"), current + 1, target, numLeft, numRight + 1);
+        this.traverse(pattern.concat("("), target, numLeft + 1, numRight);
+        this.traverse(pattern.concat(")"), target, numLeft, numRight + 1);
     }
 
     public void generateParanthesis(int num) {
@@ -33,7 +33,7 @@ public class GenerateParanthesis {
         }
         this.count = 1;
         System.out.printf("Number of parenthesis: %d \n", num);
-        this.traverse("", 0, num, 0, 0);
+        this.traverse("", num, 0, 0);
         System.out.println();
     }
 
