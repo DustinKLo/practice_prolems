@@ -19,7 +19,7 @@ def first_consecutive_non_repeat_char(s):
 
         if is_repeat is False:
             return i
-        is_repeat = False. # fail safe if tracking_char is repeated
+        is_repeat = False # fail safe if tracking_char is repeated
     
     # if reached the end and hahve not encountered a repeated character
     if tracking_char != next_char:
@@ -33,3 +33,11 @@ if __name__ == '__main__':
     print(first_consecutive_non_repeat_char("abbbcdddeeefff"))
     print("")
     print(first_consecutive_non_repeat_char("aaabbbccdddeeef"))
+    print("")
+    print(first_consecutive_non_repeat_char("aaabbbccdddeeeff"))
+    print("")
+    print(first_consecutive_non_repeat_char("aa"))
+    print("")
+    print(first_consecutive_non_repeat_char("a"))
+    print("")
+    print(first_consecutive_non_repeat_char(""))
