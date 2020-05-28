@@ -41,3 +41,5 @@ if __name__ == '__main__':
     print(first_consecutive_non_repeat_char("a"))
     print("")
     print(first_consecutive_non_repeat_char(""))
+    print("")
+    print(first_consecutive_non_repeat_char("aabcdefghijklmnopqrstuvwxyz"))
