@@ -1,56 +1,60 @@
+class Solution(object):
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        mapper = {
+            ']': '[',
+            ')': '(',
+            '}': '{',
+        }
+        stack = []
 
-def is_valid(s):
-    if len(s) % 2 != 0:
-        return False
-    if s[0] in [']', ')', '}']:
-        return False
-
-    openers = {
-        '{': '}', 
-        '(': ')', 
-        '[': ']'
-    }
-    closers = {
-        '}': '{',
-        ')': '(',
-        ']': '['
-    }
-    stack = []
-    for ch in s:
-        if ch in openers.keys():
-            stack.append(ch)
-        else:
-            opening = stack.pop()
-            match = closers[ch]
-            if opening != match:
-                return False
-
-    if len(stack) == 0:
-    	return True
-    else:
-    	return False
+        for c in s:
+            if c == '[' or c == '(' or c == '{':
+                stack.insert(0, c)
+            else:
+                if len(stack) == 0:
+                    return False
+                if c == ")" and stack[0] == "(":
+                    stack.pop(0)
+                elif c == "]" and stack[0] == "[":
+                    stack.pop(0)
+                elif c == "}" and stack[0] == "{":
+                    stack.pop(0)
+                else:
+                    return False
+        return True if len(stack) == 0 else False
 
 
 if __name__ == '__main__':
-    print(is_valid("(])[{]{}([])"))
-
-    print('\n')
-    print(is_valid("{}[]()[]{}"))
-
-    print('\n')
-    print(is_valid("([)]"))
-
-    print('\n')
-    print(is_valid("()"))
-
-    print('\n')
-    print(is_valid("(])[{]{}([}{}])"))
-
-    print('\n')
-    print(is_valid("{[()]}"))
-
-    print('\n')
-    print(is_valid("(]"))
-
-    print('\n')
-    print(is_valid("(([]){})"))
+    s = Solution()
+    t = "()"
+    print(t, s.isValid(t))
+    t = "()[]{}"
+    print(t, s.isValid(t))
+    t = "(]"
+    print(t, s.isValid(t))
+    t = "([)]"
+    print(t, s.isValid(t))
+    t = "{[]}"
+    print(t, s.isValid(t))
+    t = "}"
+    print(t, s.isValid(t))
+    t = "(])[{]{}([])"
+    print(t, s.isValid(t))
+    t = "{}[]()[]{}"
+    print(t, s.isValid(t))
+    t = "([)]"
+    print(t, s.isValid(t))
+    t = "()"
+    print(t, s.isValid(t))
+    t = "(])[{]{}([}{}])"
+    print(t, s.isValid(t))
+    t = "{[()]}"
+    print(t, s.isValid(t))
+    t = "(]"
+    print(t, s.isValid(t))
+    t = "(([]){})"
+    print(t, s.isValid(t))
