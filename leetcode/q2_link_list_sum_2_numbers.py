@@ -28,9 +28,7 @@ class Solution(object):
                 remainder = 1
             else:
                 remainder = 0
-            # print(sum_digit)
 
-            # ans = self.insert(ans, sum_digit)
             ans.next = ListNode(sum_digit)
             ans = ans.next
 
@@ -41,7 +39,6 @@ class Solution(object):
                 l2 = l2.next
 
         if remainder > 0:
-            # self.insert(ans, remainder)
             ans.next = ListNode(remainder)
             ans = ans.next
 
