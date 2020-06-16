@@ -6,19 +6,6 @@ class ListNode(object):
 
 
 class Solution(object):
-    def insert(self, root, item): 
-        temp = ListNode(item) 
-          
-        if (root == None): 
-            root = temp 
-        else : 
-            ptr = root 
-            while (ptr.next != None): 
-                ptr = ptr.next
-            ptr.next = temp 
-          
-        return root 
-
     def addTwoNumbers(self, l1, l2):
         """
         :type l1: ListNode
@@ -29,7 +16,7 @@ class Solution(object):
         remainder = 0
         started = False
 
-        ans = None
+        head = ans = ListNode(0)
 
         while l1 is not None or l2 is not None:
             l1_val = 0 if l1 is None else l1.val
@@ -43,7 +30,9 @@ class Solution(object):
                 remainder = 0
             # print(sum_digit)
 
-            ans = self.insert(ans, sum_digit)
+            # ans = self.insert(ans, sum_digit)
+            ans.next = ListNode(sum_digit)
+            ans = ans.next
 
             # this handles if one linked list is exhausted
             if l1 is not None:
@@ -52,10 +41,11 @@ class Solution(object):
                 l2 = l2.next
 
         if remainder > 0:
-            self.insert(ans, remainder)
-            print(remainder)
+            # self.insert(ans, remainder)
+            ans.next = ListNode(remainder)
+            ans = ans.next
 
-        return ans
+        return head.next
 
 
 if __name__ == '__main__':
