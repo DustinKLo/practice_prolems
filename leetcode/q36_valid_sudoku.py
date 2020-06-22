@@ -36,8 +36,7 @@ class Solution(object):
 		while y < 9:
 			x = 0
 			while x < 9:
-				grid = []
-				grid += board[y][x:x+3] + board[y+1][x:x+3] + board[y+2][x:x+3]
+				grid = board[y][x:x+3] + board[y+1][x:x+3] + board[y+2][x:x+3]
 				grid = list(filter(lambda x: x != '.', grid))
 				if len(set(grid)) != len(grid):
 					print("INVALID grids")
