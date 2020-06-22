@@ -13,7 +13,7 @@ class Solution(object):
 
 		'check horizontals'
 		for row in board:
-			row = filter(lambda x: x != '.', row)
+			row = list(filter(lambda x: x != '.', row))
 			if len(set(row)) != len(row):
 				print("INVALID rows")
 				return False
@@ -38,7 +38,7 @@ class Solution(object):
 			while x < 9:
 				grid = []
 				grid += board[y][x:x+3] + board[y+1][x:x+3] + board[y+2][x:x+3]
-				grid = filter(lambda x: x != '.', grid)
+				grid = list(filter(lambda x: x != '.', grid))
 				if len(set(grid)) != len(grid):
 					print("INVALID grids")
 					return False
