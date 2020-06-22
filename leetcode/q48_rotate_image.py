@@ -17,20 +17,23 @@ class Solution(object):
         depth = 0
 
         while left < right:
-        	for i in range(left, right):
-        		tmp1 = matrix[depth][i]
-        		tmp2 = matrix[i][right]
-        		tmp3 = matrix[right][right - i + depth]
-        		tmp4 = matrix[right - i + depth][depth]
+            for i in range(left, right):
+                tmp1 = matrix[depth][i]
+                tmp2 = matrix[i][right]
+                tmp3 = matrix[right][right - i + depth]
+                tmp4 = matrix[right - i + depth][depth]
 
-        		matrix[i][right] = tmp1
-        		matrix[right][right - i + depth] = tmp2
-        		matrix[right - i + depth][depth] = tmp3
-        		matrix[depth][i] = tmp4
+                print(i, left, right, depth)
+                # print(tmp1, tmp2, tmp3, tmp4)
 
-        	left += 1
-        	right -= 1
-        	depth += 1
+                matrix[i][right] = tmp1
+                matrix[right][right - i + depth] = tmp2
+                matrix[right - i + depth][depth] = tmp3
+                matrix[depth][i] = tmp4
+            print("")
+            left += 1
+            right -= 1
+            depth += 1
 
         self.print_matrix(matrix)
         return matrix
