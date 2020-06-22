@@ -35,3 +35,6 @@ if __name__ == '__main__':
 	binary_search(list(range(1000)), 666)
 	print("#################\n")
 	binary_search(list(range(1999999)), 333)
+	print("#################\n")
+	binary_search([1,3], 3)
+
