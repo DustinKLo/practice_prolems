@@ -32,7 +32,36 @@ class Solution(object):
 			traverse(node.right, depth + 1, axis + 1)
 
 		traverse(root, 0, 0)
-		print("values", values)
+		print("right side values", values)
+		print("########################\n")
+		return values
+
+	def leftSideView(self, root):
+		"""
+		:type root: TreeNode
+		:rtype: List[int]
+		"""
+		self.depths = -1
+		values = []
+		x_axes = []
+		def traverse(node, depth, axis):
+			if node is None:
+				return
+
+			print(node.val, depth, axis)
+			if depth > self.depths:
+				self.depths += 1
+				values.append(node.val)
+				x_axes.append(axis)
+
+			if axis <= x_axes[depth]:
+				values[depth] = node.val
+
+			traverse(node.right, depth + 1, axis + 1)
+			traverse(node.left, depth + 1, axis - 1)
+
+		traverse(root, 0, 0)
+		print("left side values", values)
 		print("########################\n")
 		return values
 
@@ -46,6 +75,7 @@ if __name__ == '__main__':
 	root.right = TreeNode(3)
 	root.right.right = TreeNode(4)
 	s.rightSideView(root)
+	s.leftSideView(root)
 
 	root = TreeNode(1)
 	root.left = TreeNode(2)
@@ -53,3 +83,4 @@ if __name__ == '__main__':
 	root.right = TreeNode(3)
 	root.right.left = TreeNode(6)
 	s.rightSideView(root)	
+	s.leftSideView(root)
