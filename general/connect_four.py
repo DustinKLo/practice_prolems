@@ -18,8 +18,6 @@ class ConnectFour:
         self.buffer = 3
         self.buffer_space = ' ' * self.buffer
         
-        self.board_height = 6
-        self.board_width = 7
         self.index_tracker = [5, 5, 5, 5, 5, 5, 5]
         self.board = [
             [' ', ' ', ' ', ' ', ' ', ' ', ' ', ],
@@ -59,7 +57,7 @@ class ConnectFour:
             except (ValueError, Exception) as e:
                 print("Input numbers please")
                 continue
-            
+
             if column < 1 or column  > 7:
                 print("choose between column 1 and 7")
                 continue
@@ -71,7 +69,7 @@ class ConnectFour:
 
     def check_horizontal(self, symbol, count, y, x):
         # y is row, x is column
-        if x > self.board_width - 1 or y > self.board_height - 1:
+        if x > 6 or y > 5:  # if outside board boundaries
             return False
         if self.board[y][x] != symbol:
             return False
@@ -81,17 +79,17 @@ class ConnectFour:
 
     def check_vertical(self, symbol, count, y, x):
         # y is row, x is column
-        if x > self.board_width - 1 or y > self.board_height - 1:
+        if x > 6 or y > 5:  # if outside board boundaries
             return False
         if self.board[y][x] != symbol:
             return False
         if count == 3 and self.board[y][x] == symbol:
             return True
-        return self.check_vertical(symbol, count + 1, y + 1, x)
+        return self.check_vertical(symbol, count + 1, y - 1, x)
 
 
     def check_diagonal(self, symbol, count, y, x, direction):
-        if x > self.board_width - 1 or y > self.board_height - 1:
+        if x > 6 or y > 5:  # if outside board boundaries
             return False
         if self.board[y][x] != symbol:
             return False
@@ -109,9 +107,8 @@ class ConnectFour:
         use DFS and detect vertical, horizontal and diaganol
         """
         winner = False
-
-        for i in range(self.board_height):
-            for j in range(self.board_width):
+        for i in range(5, 0, -1):  # rows, starting from bottom up
+            for j in range(7):  # columns
                 if self.board[i][j] == ' ':
                     continue
                 else:
@@ -124,6 +121,13 @@ class ConnectFour:
             if winner is True:
                 break
         return winner
+
+    def check_stalemate(self):
+        for row in self.board:
+            for col in row:
+                if col == ' ':
+                    return False
+        return True
 
 
 class Player:
@@ -163,6 +167,9 @@ if __name__ == '__main__':
             print("*" * 50)
             print("WINNER %s!" % current_player.symbol)
             print("*" * 50)
+            break
+        if game.check_stalemate() is True:
+            print("NO WINNER, STALEMATE")
             break
         turn *= -1
     
