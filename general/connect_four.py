@@ -97,7 +97,6 @@ class ConnectFour:
             return True
         return self.check_vertical(symbol, count + 1, y - 1, x, pattern + [[y, x]])
 
-
     def check_diagonal(self, symbol, count, y, x, direction, pattern):
         if x > 6 or y > 5:  # if outside board boundaries
             return False
