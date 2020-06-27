@@ -77,7 +77,6 @@ class ConnectFour:
 			return False
 		if count == 3 and self.board[y][x] == symbol:
 			return True
-
 		return self.check_horizontal(symbol, count + 1, y, x + 1)
 
 	def check_vertical(self, symbol, count, y, x):
@@ -157,14 +156,14 @@ if __name__ == '__main__':
 		column_input = game.input_handler(current_player)
 
 		game.add(column_input, symbol)
-		turn *= -1
-
 		winner = game.detect_winner(current_player)
 		clear_screen()
+		
 		if winner is True:
 			print("*" * 50)
 			print("WINNER %s!" % current_player.symbol)
 			print("*" * 50)
 			break
-
+		turn *= -1
+	
 	game.display()
