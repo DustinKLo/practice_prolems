@@ -46,9 +46,9 @@ class Solution(object):
 
         for i in range(self.board_width):  # column
             for j in range(self.board_height):  # row
-                self.visited = set()
                 if board[j][i] == 'X':
                     continue
+                self.visited = set()
                 is_valid = traverse(j, i)
                 if is_valid is True:  # take all sets and change to 'X'
                     for _y, _x in self.visited:
