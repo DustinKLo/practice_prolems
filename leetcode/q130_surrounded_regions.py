@@ -13,11 +13,8 @@ class Solution(object):
         print("original board")
         self.print_board(board)
 
-        if len(board) == 0:
-            return []
-
-        self.board_width = len(board[0])
         self.board_height = len(board)
+        self.board_width = 0 if self.board_height == 0 else len(board[0])
 
         def traverse(y, x):  # return boolean
             # y row, x column
@@ -98,4 +95,7 @@ if __name__ == '__main__':
 		['X', 'O', 'O', 'X', 'X', 'X', 'O', 'X', 'X', 'X', 'O', 'O', 'X', 'O', 'O', 'X', 'X', 'X', 'O', 'X', 'X', 'X', 'O', 'O'],
 		['X', 'O', 'X', 'X', 'X', 'O', 'X', 'X', 'X', 'O', 'X', 'O', 'X', 'O', 'X', 'X', 'X', 'O', 'X', 'X', 'X', 'O', 'X', 'O'],
     ]
+    s.solve(example_board)
+
+    example_board = []
     s.solve(example_board)
