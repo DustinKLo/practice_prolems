@@ -31,7 +31,7 @@ class Solution(object):
 
             if board[y][x] == 'X':
                 return True
-            self.visited.add((y, x))
+            self.visited.add((y, x))  # so we don't revisit coordinate
 
             if y == 0 or y == self.board_height - 1:
                 return False
@@ -39,10 +39,7 @@ class Solution(object):
                 return False
 
             # traverse left, right, up, down
-            return traverse(y, x - 1) and \
-                   traverse(y, x + 1) and \
-                   traverse(y + 1, x) and \
-                   traverse(y - 1, x)
+            return traverse(y, x - 1) and traverse(y, x + 1) and traverse(y + 1, x) and traverse(y - 1, x)
 
         for i in range(self.board_width):  # column
             for j in range(self.board_height):  # row
