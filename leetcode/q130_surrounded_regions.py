@@ -102,4 +102,3 @@ if __name__ == '__main__':
 		['X', 'O', 'X', 'X', 'X', 'O', 'X', 'X', 'X', 'O', 'X', 'O', 'X', 'O', 'X', 'X', 'X', 'O', 'X', 'X', 'X', 'O', 'X', 'O'],
     ]
     s.solve(example_board)
-
