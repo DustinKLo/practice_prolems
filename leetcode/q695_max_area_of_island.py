@@ -2,7 +2,7 @@ class Solution(object):
     @staticmethod
     def print_map(grid):
         for row in grid:
-            print(row)
+            print(' '.join(str(r) for r in row))
         print('')
 
     def maxAreaOfIsland(self, grid):
@@ -12,6 +12,7 @@ class Solution(object):
         """
         self.print_map(grid)
         self.max_area = 0
+        self.largest_island_coords = set()
 
         def traverse(y, x):
             # y rows
@@ -26,6 +27,7 @@ class Solution(object):
 
             self.current_area += 1
             grid[y][x] = 0  # changing to water so we don't revisit this
+            self.island_coords.add((y, x))
 
             traverse(y + 1, x)  # up
             traverse(y - 1, x)  # down
@@ -36,11 +38,20 @@ class Solution(object):
             for i in range(len(grid[j])):  # columns
                 if grid[j][i] == 0:
                     continue
+
+                self.island_coords = set()
                 self.current_area = 0
+
                 traverse(j, i)
+
                 if self.current_area > self.max_area:
+                    self.largest_island_coords = self.island_coords
                     self.max_area = self.current_area
 
+        for _y, _x in self.largest_island_coords:
+            grid[_y][_x] = '*'
+
+        self.print_map(grid)
         print("largest island's area: ", self.max_area)
         print('######################################\n')
         return self.max_area
