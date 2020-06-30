@@ -14,16 +14,16 @@ class Solution:
         str_len = len(s)
         hash_tbl = [[0] * str_len for i in range(str_len)]
 
+        if str_len == 0:
+            return ""
+        if str_len == 1:
+            return s[0]
+
         longest_length = 0
         longest_str = ""
 
         l = 0  # left bound
         r = 0  # right bound, will increment by 1 after we check palindromes by length of 1, 2, 3, etc until we reach the end
-
-        if str_len == 0:
-            return ""
-        if str_len == 1:
-            return s[0]
 
         # as long as difference between left and right boundaries and less than string length
         while r - l < str_len:
@@ -68,4 +68,5 @@ if __name__ == '__main__':
     s.longestPalindrome("ba")
     s.longestPalindrome("abcbac")
     s.longestPalindrome("forgeeksskeegfor")
+    s.longestPalindrome("forforforgeeksskeegzzz")
     s.longestPalindrome("gphyvqruxjmwhonjjrgumxjhfyupajxbjgthzdvrdqmdouuukeaxhasdsa")
