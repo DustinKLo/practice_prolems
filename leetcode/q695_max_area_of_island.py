@@ -10,7 +10,6 @@ class Solution(object):
         :type grid: List[List[int]]
         :rtype: int
         """
-        self.print_map(grid)
         self.max_area = 0
         largest_island_coords = set()
         visited = [[0] * len(row) for row in grid]
