@@ -12,11 +12,11 @@ class Solution(object):
         """
         self.print_map(grid)
         self.max_area = 0
-        self.largest_island_coords = set()
+        largest_island_coords = set()
+        visited = [[0] * len(row) for row in grid]
 
         def traverse(y, x):
-            # y rows
-            # x columns
+            # y rows, x columns
             if y < 0 or y > len(grid) - 1:
                 return
             if x < 0 or x > len(grid[y]) - 1:
@@ -25,8 +25,11 @@ class Solution(object):
             if grid[y][x] == 0:
                 return
 
+            if visited[y][x] == 1:
+                return
+
             self.current_area += 1
-            grid[y][x] = 0  # changing to water so we don't revisit this
+            visited[y][x] = 1  # so we don't revisit this
             self.island_coords.add((y, x))
 
             traverse(y + 1, x)  # up
@@ -45,11 +48,11 @@ class Solution(object):
                 traverse(j, i)
 
                 if self.current_area > self.max_area:
-                    self.largest_island_coords = self.island_coords
+                    largest_island_coords = self.island_coords
                     self.max_area = self.current_area
 
-        for _y, _x in self.largest_island_coords:
-            grid[_y][_x] = '*'
+        for _y, _x in largest_island_coords:
+            grid[_y][_x] = '\033[1m' + '1' + '\033[0m'
 
         self.print_map(grid)
         print("largest island's area: ", self.max_area)
