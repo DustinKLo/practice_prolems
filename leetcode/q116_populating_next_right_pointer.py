@@ -29,9 +29,6 @@ class Solution(object):
 
         traverse(root, 0)
 
-        if len(self.depths) == 0:
-            return root
-
         for row in self.depths:
             if len(row) == 1:
                 continue
