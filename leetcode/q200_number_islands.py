@@ -2,52 +2,52 @@ class Solution(object):
     @staticmethod
     def print_map(grid):
         for row in grid:
-            print(row)
+            # print(row)
+            formatted_row = '\t'.join(row).expandtabs(5)
+            print(formatted_row)
 
     def numIslands(self, grid):
         """
         :type grid: List[List[str]]
         :rtype: int
         """
+        visited = [[0] * len(row) for row in grid]
+
         def traverse(y, x):
             # y rows, x columns
-            if y > self.map_height - 1 or y < 0:  # if outside map
+            if y > len(grid) - 1 or y < 0:  # if outside map
                 return
-            if x > self.map_width - 1 or x < 0:
-                return
-
-            if grid[y][x] == '#':  # if we already visited coordinate
+            if x > len(grid[y]) - 1 or x < 0:
                 return
 
             if grid[y][x] == '0':  # will not traverse if water
                 return
 
-            grid[y][x] = '#'
+            if visited[y][x] == 1:  # if we already visited coordinate
+                return
+
+            visited[y][x] = 1
+            self.coordinates.add((y, x))
 
             traverse(y - 1, x)  # up
             traverse(y + 1, x)  # down
             traverse(y, x - 1)  # left
             traverse(y, x + 1)  # right
 
-        self.print_map(grid)
-
-        if len(grid) == 0:
-            print("final island count:", 0)
-            print("###########################\n")
-            return 0
-
-        self.map_width = len(grid[0])
-        self.map_height = len(grid)
-
         island_num = 0
-        for i in range(self.map_height):
-            for j in range(self.map_width):
-                if grid[i][j] == '#':
+        for i in range(len(grid)):
+            for j in range(len(grid[i])):
+                if visited[i][j] == 1:
                     continue
                 if grid[i][j] == '1':
                     island_num += 1
+                self.coordinates = set()
                 traverse(i, j)
 
+                for _y, _x in self.coordinates:
+                    grid[_y][_x] = str(island_num)
+
+        self.print_map(grid)
         print("final island count:", island_num)
         print("###########################\n")
         return island_num
