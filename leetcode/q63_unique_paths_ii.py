@@ -20,7 +20,7 @@ class Solution(object):
             # y rows
             # x columns
             if y > len(obstacleGrid) - 1 or x > len(obstacleGrid[y]) - 1:
-            	# outside grid
+                # outside grid
                 return 0
 
             if obstacleGrid[y][x] == 1:
@@ -117,5 +117,17 @@ if __name__ == '__main__':
         [0,0,0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0,0,1],
         [0,0,0,0,0,0,0,1,0],
+    ]
+    paths = s.uniquePathsWithObstacles(grid)
+
+    grid = [
+        [0,0,0,0,0,0,0,1],
+        [0,0,0,0,0,0,1,0],
+        [0,0,0,0,0,1,0,0],
+        [0,0,0,0,1,0,0,0],
+        [0,0,0,1,0,0,0,0],
+        [0,0,1,0,0,0,0,0],
+        [0,1,0,0,0,0,0,0],
+        [1,0,0,0,0,0,0,0],
     ]
     paths = s.uniquePathsWithObstacles(grid)
