@@ -21,6 +21,7 @@ class Solution(object):
             left = traverse(total - nums[i], S, i + 1, end)
             right = traverse(total + nums[i], S, i + 1, end)
 
+            # caching the index and total at index into memory table so it can be reused
             mem[i, total] = left + right
             return left + right
 
