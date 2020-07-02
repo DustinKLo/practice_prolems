@@ -23,6 +23,7 @@ class Solution(object):
                 return 0
 
             if y == m - 1 and x == n - 1:
+                mem[y][x] = 1
                 return 1
 
             if mem[y][x] > float('-inf'):
