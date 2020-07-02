@@ -24,9 +24,9 @@ class Solution(object):
         
         ans = []
         l = 0  # left
-        r = len(matrix[0])
+        r = n
         u = 0  # up
-        d = len(matrix)
+        d = n
 
         num = 1
         direction = 'right'  # starting direction
