@@ -2,7 +2,7 @@ class Solution(object):
     @staticmethod
     def print_tbl(tbl):
         for row in tbl:
-            print(row)
+            print('  '.join(row))
 
     def exist(self, board, word):
         """
