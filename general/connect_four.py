@@ -137,7 +137,7 @@ class ConnectFour:
         for sq in pattern:
             y = sq[0]
             x = sq[1]
-            self.board[y][x] = "█"
+            self.board[y][x] = '\033[1m' + self.board[y][x] + '\033[0m'
 
     def check_stalemate(self):
         for row in self.board:
