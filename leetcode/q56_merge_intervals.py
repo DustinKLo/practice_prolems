@@ -17,8 +17,7 @@ class Solution(object):
                     l = l[:-1]
                     r = mid + r[1:]
                 else:
-                    break
-            return l + r
+                    return l + r
 
         def divide_and_conquer(l):
             if len(l) == 0:
