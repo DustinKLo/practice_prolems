@@ -46,7 +46,6 @@ class Solution(object):
         return ans
 
 
-
 if __name__ == '__main__':
     s = Solution()
     s.merge([[1,3],[2,6],[8,10],[15,18]])
