@@ -8,7 +8,7 @@ class Solution(object):
         :rtype: str
         """
         num_set = ''.join(str(c) for c in range(1, n + 1))
-        print(num_set)
+        print(num_set, k)
 
         self.count = 0
         self.target = k
@@ -34,20 +34,16 @@ class Solution(object):
         num_set = ''.join(str(c) for c in range(1, n + 1))
         letters_remaining = len(num_set)
 
+        print(num_set, k)
         k -= 1
         
         ans = ""
         start = 0
-
-        print(num_set)
         
-        while len(num_set) > 0:
+        while letters_remaining > 0:
             num_options = math.factorial(letters_remaining)
             choice_per_option = int(num_options / letters_remaining)
-            if num_options == 1:
-                idx = 0
-            else: 
-                idx = int(k / choice_per_option)
+            idx = int(k / choice_per_option)
             left_bound = choice_per_option * idx
             k = k - left_bound
             
