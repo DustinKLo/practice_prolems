@@ -28,7 +28,7 @@ class Solution(object):
         return self.ans
 
     def getPermutation(self, n, k):
-        if k < 0 or k > math.factorial(n):
+        if k < 1 or k > math.factorial(n):
             return ""
 
         num_set = ''.join(str(c) for c in range(1, n + 1))
