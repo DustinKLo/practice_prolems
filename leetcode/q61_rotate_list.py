@@ -5,12 +5,6 @@ class ListNode(object):
         self.next = next
 
 class Solution(object):
-    @staticmethod
-    def print_linked_list(head):
-        while head is not None:
-            print(head.val)
-            head = head.next
-
     def rotateRight(self, head, k):
         """
         :type head: ListNode
@@ -23,11 +17,11 @@ class Solution(object):
             return head
         
         ls = []
+        ls_len = 0
         while head is not None:
             ls.append(head.val)
             head = head.next
-
-        ls_len = len(ls)
+            ls_len += 1
 
         # find the mod, k % len(ls) (minimum rotations)
         k_mod = k % ls_len
