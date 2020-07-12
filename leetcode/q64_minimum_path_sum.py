@@ -64,8 +64,10 @@ class Solution(object):
         
         path_sum = [grid[_y][_x] for _y, _x in pts]
         print(' + '.join(str(i) for i in path_sum))
+        ans = mem[max_y, max_x]['smallest_sum']
+        print("ans: %d" % ans)
         print("########################\n")
-        return mem[max_y, max_x]['smallest_sum']
+        return ans
 
 
 if __name__ == '__main__':
