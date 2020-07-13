@@ -1,7 +1,15 @@
 from pprint import pprint
+import copy
 # USING DIJKSTRA'S SHORTEST PATH ALGORITHM
 
 class Solution(object):
+    @staticmethod
+    def print_grid(grid):
+        for row in grid:
+            print_row = '  '.join(str(i) for i in row)
+            print(print_row)
+        print("")
+
     def minPathSum(self, grid):
         """
         :type grid: List[List[int]]
@@ -28,7 +36,10 @@ class Solution(object):
                     'smallest_sum': float('inf'),
                     'prev': None,
                 }
-        mem[0, 0] = {'smallest_sum': grid[0][0], 'prev': None}
+        mem[0, 0] = {
+            'smallest_sum': grid[0][0],
+            'prev': None
+        }
 
         # loop through each value in grid
         #   within each grid calculate the sum path of the right and bottom coord
@@ -61,6 +72,12 @@ class Solution(object):
             if pt is None:
                 break
             pts.insert(0, pt)
+
+        grid_cpy = copy.deepcopy(grid)
+        for pt in pts:
+            _y, _x = pt
+            grid_cpy[_y][_x] = '\033[1m' + str(grid_cpy[_y][_x]) + '\033[0m'
+        self.print_grid(grid_cpy)
         
         path_sum = [grid[_y][_x] for _y, _x in pts]
         print(' + '.join(str(i) for i in path_sum))
