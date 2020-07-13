@@ -15,19 +15,18 @@ class Solution(object):
 
         # loop i and j until they match
         # inner loop will pop value from nums until ith and jth letter dont match no more
-        while i < nums_len:
-            if j < nums_len:
-                if nums[i] == nums[j]:
-                    # inner while loop
-                    while j < nums_len and nums[i] == nums[j]:
-                        nums.pop(j)
-                        nums_len -= 1  # decreasing to keep length of array consistent
-                j += 1
+        while j < nums_len:
+            if nums[i] == nums[j]:
+                # inner while loop
+                while j < nums_len and nums[i] == nums[j]:
+                    nums.pop(j)
+                    nums_len -= 1  # decreasing to keep length of array consistent
+            j += 1
             i += 1
         print(nums)
         print("ans: %d" % i)
         print("########################################\n")
-        return i
+        return nums_len
 
 
 if __name__ == '__main__':
