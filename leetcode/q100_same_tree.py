@@ -1,39 +1,33 @@
 # Definition for a binary tree node.
-# class TreeNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
+class TreeNode(object):
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
 
 
 class Solution(object):
-    # depth verse search helper function
-    def traverseTree(self, node, l):
-        if node == None:
-            l.append(None)
-            return
-
-        l.append(node.val)
-        self.traverseTree(node.left, l)
-        self.traverseTree(node.right, l)
-        
     def isSameTree(self, p, q):
         """
         :type p: TreeNode
         :type q: TreeNode
         :rtype: bool
         """
-        
-        l1 = []
-        l2 = []
-        self.traverseTree(p, l1)
-        self.traverseTree(q, l2)
-        
-        print(l1)
-        print(l2)
-        
-        if l1 == l2:
+        if p is None and q is None:
             return True
-        else:
+
+        pval = p.val if p is not None else None
+        qval = q.val if q is not None else None
+
+        if pval != qval:
             return False
-        
+
+        return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
+
+
+if __name__ == '__main__':
+    s = Solution()
+
+    root1 = TreeNode(1)
+    root2 = None
+    print(s.isSameTree(root1, root2))
