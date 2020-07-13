@@ -6,20 +6,22 @@ class Solution(object):
         """
         print(nums)
         
-        if len(nums) < 3:
-            return nums
+        nums_len = len(nums)
+        if nums_len < 3:
+            return nums_len
 
         i = 0  # starting pointer
         j = 2  # end pointer
 
         # loop i and j until they match
         # inner loop will pop value from nums until ith and jth letter dont match no more
-        while i < len(nums):
-            if j < len(nums):
+        while i < nums_len:
+            if j < nums_len:
                 if nums[i] == nums[j]:
                     # inner while loop
-                    while j < len(nums) and nums[i] == nums[j]:
+                    while j < nums_len and nums[i] == nums[j]:
                         nums.pop(j)
+                        nums_len -= 1  # decreasing to keep length of array consistent
                 j += 1
             i += 1
         print(nums)
