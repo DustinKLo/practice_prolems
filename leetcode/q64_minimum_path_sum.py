@@ -29,14 +29,15 @@ class Solution(object):
         if len(grid) == 0:
             return 0
 
-        mem = {}
+        # mem = {}
+        mem = [[None] * len(grid[i]) for i in range(len(grid))]
         for j in range(len(grid)):  # row
             for i in range(len(grid[j])):  # column
-                mem[j, i] = {
+                mem[j][i] = {
                     'smallest_sum': float('inf'),
                     'prev': None,
                 }
-        mem[0, 0] = {
+        mem[0][0] = {
             'smallest_sum': grid[0][0],
             'prev': None
         }
@@ -48,17 +49,17 @@ class Solution(object):
             for i in range(len(grid[j])):  # column
                 # check right
                 if i + 1 <= len(grid[j]) - 1:
-                    cur_sum = mem[j, i]['smallest_sum'] + grid[j][i + 1]
-                    if cur_sum < mem[j, i + 1]['smallest_sum']:
-                        mem[j, i + 1]['smallest_sum'] = cur_sum
-                        mem[j, i + 1]['prev'] = (j, i)
+                    cur_sum = mem[j][i]['smallest_sum'] + grid[j][i + 1]
+                    if cur_sum < mem[j][i + 1]['smallest_sum']:
+                        mem[j][i + 1]['smallest_sum'] = cur_sum
+                        mem[j][i + 1]['prev'] = (j, i)
 
                 # check bottom
                 if j + 1 <= len(grid) - 1:
-                    cur_sum = mem[j, i]['smallest_sum'] + grid[j + 1][i]
-                    if cur_sum < mem[j + 1, i]['smallest_sum']:
-                        mem[j + 1, i]['smallest_sum'] = cur_sum
-                        mem[j + 1, i]['prev'] = (j, i)
+                    cur_sum = mem[j][i]['smallest_sum'] + grid[j + 1][i]
+                    if cur_sum < mem[j + 1][i]['smallest_sum']:
+                        mem[j + 1][i]['smallest_sum'] = cur_sum
+                        mem[j + 1][i]['prev'] = (j, i)
 
         max_y = len(grid) - 1
         max_x = len(grid[max_y]) - 1
@@ -68,7 +69,8 @@ class Solution(object):
         pts = [pt]
         vals = [grid[max_y][max_x]]
         while True:
-            pt = mem[pt]['prev']
+            _y, _x = pt
+            pt = mem[_y][_x]['prev']
             if pt is None:
                 break
             pts.insert(0, pt)
@@ -81,7 +83,7 @@ class Solution(object):
         
         path_sum = [grid[_y][_x] for _y, _x in pts]
         print(' + '.join(str(i) for i in path_sum))
-        ans = mem[max_y, max_x]['smallest_sum']
+        ans = mem[max_y][max_x]['smallest_sum']
         print("ans: %d" % ans)
         print("########################\n")
         return ans
