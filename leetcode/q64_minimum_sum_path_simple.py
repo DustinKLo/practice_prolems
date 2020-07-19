@@ -1,15 +1,5 @@
-from pprint import pprint
-import copy
-# USING DIJKSTRA'S SHORTEST PATH ALGORITHM
-
 class Solution(object):
-    @staticmethod
-    def print_grid(grid):
-        for row in grid:
-            print_row = '  '.join(str(i) for i in row)
-            print(print_row)
-        print("")
-
+    # USING DIJKSTRA'S SHORTEST PATH ALGORITHM
     def minPathSum(self, grid):
         """
         :type grid: List[List[int]]
@@ -29,17 +19,8 @@ class Solution(object):
         if len(grid) == 0:
             return 0
 
-        mem = [[None] * len(grid[i]) for i in range(len(grid))]
-        for j in range(len(grid)):  # row
-            for i in range(len(grid[j])):  # column
-                mem[j][i] = {
-                    'smallest_sum': float('inf'),
-                    'prev': None,
-                }
-        mem[0][0] = {
-            'smallest_sum': grid[0][0],
-            'prev': None
-        }
+        mem = [[float('inf')] * len(grid[i]) for i in range(len(grid))]
+        mem[0][0] = grid[0][0]
 
         # loop through each value in grid
         #   within each grid calculate the sum path of the right and bottom coord
@@ -48,41 +29,20 @@ class Solution(object):
             for i in range(len(grid[j])):  # column
                 # check right
                 if i + 1 <= len(grid[j]) - 1:
-                    cur_sum = mem[j][i]['smallest_sum'] + grid[j][i + 1]
-                    if cur_sum < mem[j][i + 1]['smallest_sum']:
-                        mem[j][i + 1]['smallest_sum'] = cur_sum
-                        mem[j][i + 1]['prev'] = (j, i)
+                    cur_sum = mem[j][i] + grid[j][i + 1]
+                    if cur_sum < mem[j][i + 1]:
+                        mem[j][i + 1] = cur_sum
 
                 # check bottom
                 if j + 1 <= len(grid) - 1:
-                    cur_sum = mem[j][i]['smallest_sum'] + grid[j + 1][i]
-                    if cur_sum < mem[j + 1][i]['smallest_sum']:
-                        mem[j + 1][i]['smallest_sum'] = cur_sum
-                        mem[j + 1][i]['prev'] = (j, i)
+                    cur_sum = mem[j][i] + grid[j + 1][i]
+                    if cur_sum < mem[j + 1][i]:
+                        mem[j + 1][i] = cur_sum
 
         max_y = len(grid) - 1
         max_x = len(grid[max_y]) - 1
+        ans = mem[max_y][max_x]
 
-        # printing the shortest path
-        pt = (max_y, max_x)
-        pts = [pt]
-        vals = [grid[max_y][max_x]]
-        while True:
-            _y, _x = pt
-            pt = mem[_y][_x]['prev']
-            if pt is None:
-                break
-            pts.insert(0, pt)
-
-        grid_cpy = copy.deepcopy(grid)
-        for pt in pts:
-            _y, _x = pt
-            grid_cpy[_y][_x] = '\033[1m' + str(grid_cpy[_y][_x]) + '\033[0m'
-        self.print_grid(grid_cpy)
-        
-        path_sum = [grid[_y][_x] for _y, _x in pts]
-        print(' + '.join(str(i) for i in path_sum))
-        ans = mem[max_y][max_x]['smallest_sum']
         print("ans: %d" % ans)
         print("########################\n")
         return ans
