@@ -1,10 +1,10 @@
-import java.io.*; 
-import java.util.*; 
+import java.util.Stack;
+import java.util.HashMap;
 
 public class ZPlusPlus {
 	public static Boolean validate(String inputString) {
 		Stack<Character> stack = new Stack<>();
-		
+
 		HashMap<Character, Character> mapper = new HashMap<>();
 		mapper.put(')', '(');
 		mapper.put(']', '[');
@@ -15,9 +15,9 @@ public class ZPlusPlus {
 			if (c == '(' || c == '[' || c == '{') {
 				stack.push(c);
 				continue;
-			} else if (stack.isEmpty() || mapper.get(c) != stack.peek()){
+			} else if (stack.isEmpty() || mapper.get(c) != stack.peek()) {
 				return false;
-			} 
+			}
 			stack.pop();
 		}
 		return (stack.size() == 0) ? true : false;
