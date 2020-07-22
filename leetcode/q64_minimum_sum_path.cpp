@@ -19,7 +19,7 @@ public:
       for (int i = 0; i < c; i++)
         mem[j][i] = INFINITY;
     }
-    mem[0][0] = grid[0][0];
+    mem[0][0] = 0;
 
     double cur;
     int ans;
@@ -44,7 +44,7 @@ public:
         }
       }
     }
-    ans = (int)mem[r - 1][c - 1];
+    ans = (int)mem[r - 1][c - 1] + grid[0][0];
 
     for (int j = 0; j < r; j++)
       delete[] mem[j];
