@@ -7,6 +7,8 @@
 .idea/
 .idea
 
+.vscode
+
 a.out
 
 # Byte-compiled / optimized / DLL files
