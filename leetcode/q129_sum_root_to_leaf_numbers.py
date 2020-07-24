@@ -11,24 +11,22 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
-        self.ans = 0
         def dfs(node, v):
             if node is None:
-                return
+                return 0
 
             leaf_val = v * 10 + node.val
             print(node.val, leaf_val)
 
             if node.left is None and node.right is None:
-                self.ans += leaf_val
-                return
-            
-            dfs(node.left, leaf_val)
-            dfs(node.right, leaf_val)
-        dfs(root, 0)
-        print(self.ans)
-        print("########################\n")
-        return self.ans
+                return leaf_val
+
+            return dfs(node.left, leaf_val) + dfs(node.right, leaf_val)
+
+        ans = dfs(root, 0)
+        print(ans)
+        print("###################################\n")
+        return ans
 
 
 if __name__ == '__main__':
