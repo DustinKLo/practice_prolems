@@ -5,9 +5,6 @@ class Solution(object):
 		:type newInterval: List[int]
 		:rtype: List[List[int]]
 		"""
-		print(intervals)
-		print(newInterval)
-		print("")
 		i = 0
 		while i < len(intervals):
 			cur = intervals[i]
@@ -35,8 +32,6 @@ class Solution(object):
 		if inserted is False:
 			intervals += [newInterval]
 
-		print(intervals)
-		print("####################\n")
 		return intervals
 
 
