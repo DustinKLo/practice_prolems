@@ -22,8 +22,6 @@ class Solution(object):
 		inserted = False
 		for i in range(len(intervals)):
 			# check if cur is greater than newInterval
-			# newInterval[1] < cur[0]
-			# then insert it into intervals
 			cur = intervals[i]
 			if newInterval[1] < cur[0]:
 				intervals = intervals[:i] + [newInterval] + intervals[i:]
