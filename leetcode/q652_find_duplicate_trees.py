@@ -12,7 +12,6 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[TreeNode]
         """
-        # self.sub_tree_vals = []
         self.counts = {}
         self.ans = []
         
@@ -23,7 +22,7 @@ class Solution(object):
             left = dfs(node.left)
             right = dfs(node.right)
 
-            str_hash = str(left + [node.val] + right)
+            str_hash = str([node.val] + left + right)
             
             if str_hash not in self.counts:
                 self.counts[str_hash] = 1
@@ -31,14 +30,12 @@ class Solution(object):
                 self.counts[str_hash] += 1
                 self.ans.append(node)
 
-            return left + [node.val] + right
+            return [node.val] + left + right
 
         dfs(root)
 
-        for k in self.counts:
-        	print(k, self.counts[k])
-
-        print(self.ans)
+        for n in self.ans:
+        	print(n, n.val)
         print("#########################\n")
         return self.ans
 
